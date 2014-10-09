@@ -1,0 +1,30 @@
+# Create a new directory and enter it
+function mkd() {
+	mkdir -p "$@" && cd "$@";
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+	local port="${1:-8000}";
+	python -m SimpleHTTPServer ${port};
+}
+
+# `v` with no arguments opens the current directory in Vim, otherwise opens the given location
+function v() {
+	if [ $# -eq 0 ]; then
+		vim;
+	else
+		vim "$@";
+	fi;
+}
+
+# `a` with no arguments opens the current direcory in Atom Editor, otherwise
+# opens the given location
+function a() {
+	if [ $# -eq 0 ]; then
+		atom .;
+	else
+		atom "$@";
+	fi;
+}
+
