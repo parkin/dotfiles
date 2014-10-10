@@ -97,14 +97,17 @@ else
 fi;
 
 # Highlight the hostname when connected via SSH.
-if [[ "${SSH_TTY}" ]]; then
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 	hostStyle="${bold}${red}";
+	# If ssh, show the user and hostname in the window title, set below
+	title_scheme='\u@\h:';
 else
 	hostStyle="${yellow}";
+	title_scheme='';
 fi;
 
 # Set the terminal title to the current working directory.
-PS1="\[\033]0;\w\007\]";
+PS1="\[\033]0;${title_scheme}\w\007\]";
 PS1+="\[${bold}\]\n"; # newline
 PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${white}\] at ";
