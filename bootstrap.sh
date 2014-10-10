@@ -10,7 +10,15 @@ function doIt() {
 		--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 	source ~/.bash_profile;
 
-	# download plugins using vundle
+	# Check if vundle is installed. If not, install it.
+	if ! [ -d ~/.vim/bundle ]; then
+		mkdir ~/.vim/bundle;
+	fi;
+	if ! [ -d ~/.vim/bundle/Vundle.vim ]; then
+		git clone git@github.com:gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim;
+	fi;
+
+	# Make sure all plugins are installed
 	vim +PluginInstall +qall;
 }
 
