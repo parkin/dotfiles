@@ -106,9 +106,26 @@ else
 	title_scheme='';
 fi;
 
+prompt_virtualenv() {
+	local s=''
+	# Check if we're in a virtualenv
+	if [ -n "${VIRTUAL_ENV+1}" ]; then
+		s="(`basename \"$VIRTUAL_ENV\"`) ";
+	else
+		return;
+	fi;
+
+	[ -n "${s}" ] && s="${s}";
+
+	echo -e "${cyan}${s}";
+
+}
+
+
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;${title_scheme}\w\007\]";
 PS1+="\[${bold}\]\n"; # newline
+PS1+="\$(prompt_virtualenv)"; # virtualenv
 PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${white}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host

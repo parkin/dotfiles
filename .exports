@@ -16,3 +16,6 @@ export MANPAGER="less -X";
 
 # Always enable colored `grep` output
 export GREP_OPTIONS="--color=auto";
+
+# Disable virtualenv prompt. We set this in .bash_prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1;
