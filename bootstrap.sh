@@ -9,6 +9,9 @@ function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_STore" --exclude "bootstrap.sh"\
 		--exclude "README.md" --exclude "LICENSE" -avh --no-perms . ~;
 	source ~/.bash_profile;
+
+	# download plugins using vundle
+	vim +PluginInstall +qall;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
