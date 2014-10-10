@@ -12,7 +12,7 @@ function server() {
 # `v` with no arguments opens the current directory in Vim, otherwise opens the given location
 function v() {
 	if [ $# -eq 0 ]; then
-		vim;
+		find . -maxdepth 1 -type f -exec vim {} +;
 	else
 		vim "$@";
 	fi;
