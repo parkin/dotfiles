@@ -24,9 +24,6 @@ Plugin 'kien/ctrlp.vim'
 
 "****** vim-gitgutter for git diff in the gutter
 Plugin 'airblade/vim-gitgutter'
-" speed up plugin
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
 
 " *********************************
 " All of your Plugins must be added before the following line
