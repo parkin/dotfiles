@@ -45,3 +45,44 @@ filetype plugin indent on	"required
 " Enable line numbers
 set number
 
+" Optimize for fast terminal connections
+set ttyfast
+
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+	set undodir=~/.vim/undo
+endif
+
+" Don't create backups when editing files in certain directories
+set backupskip=/tmp/*,/private/tmp/*
+
+" Highlight current line
+set cursorline
+
+" Highlight searches
+set hlsearch
+
+" Ignore case of searches
+set ignorecase
+
+" Enable mouse in all modes
+set mouse=a
+
+" Show the cursor position
+set ruler
+
+" Start scrolling three lines before the horizontal window border
+set scrolloff=3
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	:%s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+
