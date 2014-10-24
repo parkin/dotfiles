@@ -4,9 +4,24 @@ function mkd() {
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
+# and the host
+# Params:
+#   $1 - port. Default is 8000.
+#   $2 - host. Default is localhost.
 function server() {
-	local port="${1:-8000}";
-	python -m SimpleHTTPServer ${port};
+	if [[ $1 == '-h' ]]; then
+		echo "Usage: server <host, default localhost> <port, default 8000>";
+		return 1;
+	fi;
+
+	# Set defaults
+	local host="${1:-localhost}";
+	local port="${2:-8000}";
+	
+	#python -m SimpleHTTPServer ${ip}:${port}; # old way, defaults to external host
+	echo "Serving HTTP on ${host} port ${port} ...";
+	local script="import BaseHTTPServer as bhs, SimpleHTTPServer as shs; bhs.HTTPServer(('${host}', ${port}), shs.SimpleHTTPRequestHandler).serve_forever()";
+	python -c "$script";
 }
 
 # `v` with no arguments opens the current directory in Vim, otherwise opens the given location
