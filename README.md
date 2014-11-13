@@ -34,6 +34,8 @@ Here's an example `~/.path` file that adds `~/utils` to the `$PATH`:
 export PATH="$HOME/utils:$PATH"
 ```
 
+Note that `~/bin` is already added to the `$PATH` in [.exports](.exports).
+
 ###Adding Custom Commands
 
 If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository.
