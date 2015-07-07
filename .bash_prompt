@@ -121,11 +121,25 @@ prompt_virtualenv() {
 
 }
 
+prompt_node() {
+	local s=''
+	# Check if node is installed
+	if hash node 2>/dev/null; then
+		s="(`node -v`) ";
+	else
+		return;
+	fi;
+	[ -n "${s}" ] && s="${s}";
+	
+	echo -e "${green}${s}";
+}
+
 
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;${title_scheme}\w\007\]";
 PS1+="\[${bold}\]\n"; # newline
 PS1+="\$(prompt_virtualenv)"; # virtualenv
+PS1+="\$(prompt_node)"; # node version
 PS1+="\[${userStyle}\]\u"; # username
 PS1+="\[${white}\] at ";
 PS1+="\[${hostStyle}\]\h"; # host
