@@ -2,7 +2,6 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
 
 function doIt() {
 	# rsync this directory to the home, excluding files
@@ -25,8 +24,15 @@ function doIt() {
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
+	git pull origin master;
 	doIt;
 else
+	read -p "Do you want to pull the latest remote changes? (y/n) " -n 1;
+	echo "";
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		git pull origin master;
+	fi;
+
 	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
