@@ -19,3 +19,6 @@ export MANPAGER="less -X";
 
 # Disable virtualenv prompt. We set this in .bash_prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1;
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr
+export PYTHONIOENCODING='UTF=8';
