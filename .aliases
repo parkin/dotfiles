@@ -60,3 +60,6 @@ alias reload="exec $SHELL -l"
 alias grep='grep -n --color=auto'
 alias fgrep='fgrep -n --color=auto'
 alias egrep='egrep -n --color=auto'
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
