@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$@";
@@ -17,7 +19,7 @@ function server() {
 	# Set defaults
 	local host="${1:-localhost}";
 	local port="${2:-8000}";
-	
+
 	#python -m SimpleHTTPServer ${ip}:${port}; # old way, defaults to external host
 	echo "Serving HTTP on ${host} port ${port} ...";
 	local script="import BaseHTTPServer as bhs, SimpleHTTPServer as shs; bhs.HTTPServer(('${host}', ${port}), shs.SimpleHTTPRequestHandler).serve_forever()";
@@ -42,4 +44,3 @@ function a() {
 		atom "$@";
 	fi;
 }
-
