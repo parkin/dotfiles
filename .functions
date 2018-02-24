@@ -67,7 +67,7 @@ function socks5() {
 	local port="${2:-8000}";
 
 	echo "Starting SOCKS tunnel to ${domain} port ${port} ...";
-	ssh -D "${port}" -f -c -q -N "${domain}";
+	ssh -D "${port}" -f -C -q -N "${domain}";
 	echo "";
 	echo "ps aux | grep ssh";
 	ps aux | grep ssh;
