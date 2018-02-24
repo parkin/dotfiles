@@ -44,3 +44,33 @@ function a() {
 		atom "$@";
 	fi;
 }
+
+# Create a SOCKS Tunnel with this command
+# see https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel
+function socks5() {
+	if [[ $1 == '-h' ]]; then
+		echo "Usage: socks5 <user@example.com> <port, default 8000>";
+		echo "Use 'ps aux | grep ssh' to make sure process has been started. Look for 'ssh -D <port> f -C -q -N <user@example.com>'";
+		echo "Kill the process when you are finished";
+		return 1;
+	fi;
+
+	if [ $# -eq 0 ]; then
+		echo "Please specify a user@domain.";
+		echo "";
+		socks5 -h;
+		return 1;
+	fi;
+
+	# Set defaults
+	local domain="${1}";
+	local port="${2:-8000}";
+
+	echo "Starting SOCKS tunnel to ${domain} port ${port} ...";
+	ssh -D "${port}" -f -c -q -N "${domain}";
+	echo "";
+	echo "ps aux | grep ssh";
+	ps aux | grep ssh;
+	echo "";
+	echo "Kill the process when you are finished";
+}
