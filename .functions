@@ -50,7 +50,7 @@ function a() {
 function socks5() {
 	if [[ $1 == '-h' ]]; then
 		echo "Usage: socks5 <user@example.com> <port, default 8000>";
-		echo "Use 'ps aux | grep ssh' to make sure process has been started. Look for 'ssh -D <port> f -C -q -N <user@example.com>'";
+		echo "Use 'ps aux | grep ssh' to make sure process has been started. Look for 'ssh -D <port> -f -C -q -N <user@example.com>'";
 		echo "Kill the process when you are finished";
 		return 1;
 	fi;
@@ -67,6 +67,7 @@ function socks5() {
 	local port="${2:-8000}";
 
 	echo "Starting SOCKS tunnel to ${domain} port ${port} ...";
+	echo "Successful only if 'ssh -D <port> -f -C -q -N <user@example.com>' is shown below'";
 	ssh -D "${port}" -f -C -q -N "${domain}";
 	echo "";
 	echo "ps aux | grep ssh";
