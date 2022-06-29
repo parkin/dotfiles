@@ -40,3 +40,7 @@ fi;
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
+
+# set up the JAVA_HOME env variable
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+
