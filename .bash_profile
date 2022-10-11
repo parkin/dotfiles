@@ -44,3 +44,8 @@ export NVM_DIR="$HOME/.nvm"
 # set up the JAVA_HOME env variable
 export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 
+# pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
