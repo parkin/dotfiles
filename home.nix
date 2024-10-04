@@ -93,6 +93,7 @@
   #  /etc/profiles/per-user/parkin/etc/profile.d/hm-session-vars.sh
   #
 
+  ## neovim import
   imports = [ ./nvim.nix ];
 
   ## My programs
@@ -101,6 +102,31 @@
     bashrcExtra = ''
       eval "$(starship init bash)"
     '';
+    shellAliases = {
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
+      "~" = "cd ~";
+      cddot = "cd ~/.dotfiles"; # TODO use variable for dotfiles path
+      # Reload the shell (i.e. invoke as a login shell)
+      "reload" = "exec $SHELL -l";
+      # Print each PATH entry on a separate line
+      "path" = "echo -e \${PATH//:/\\n}";
+      # Git stuff
+      ga = "git add";
+      gc = "git commit";
+      gcm = "git commit -m";
+      gs = "git status";
+      gd = "git diff";
+      gf = "git fetch";
+      gm = "git merge";
+      gr = "git rebase";
+      gp = "git push";
+      gu = "git unstage";
+      gco = "git checkout";
+      gb = "git branch";
+    };
   };
 
   programs.git = {
