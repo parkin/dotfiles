@@ -17,6 +17,8 @@ After this, we can run `home-manager swtch` using
 home-manager switch --flake .
 ```
 
+After switching, you may have to run `exec $SHELL -l`, which I've aliased as `reload`.
+
 Use the following to upgrade the flake
 
 ```shell
