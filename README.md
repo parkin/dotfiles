@@ -16,3 +16,9 @@ After this, we can run `home-manager swtch` using
 ```shell
 home-manager switch --flake .
 ```
+
+Use the following to upgrade the flake
+
+```shell
+nix flake update
+```
