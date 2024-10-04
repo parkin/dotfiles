@@ -1,5 +1,7 @@
 # dotfiles
 
+Clone this repo into your `~/.dotfiles` directory.
+
 This flake is set up run as `home-manager`.
 So to run `home-manager switch`, the first time we need to run
 
