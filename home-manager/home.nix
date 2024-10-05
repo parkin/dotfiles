@@ -12,8 +12,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "parkin";
-  home.homeDirectory = "/home/parkin";
+  home.username = "${username}";
+  home.homeDirectory = "${homeDirectory}";
 
   # this is to ensure apps show up in applications menu
   # https://github.com/nix-community/home-manager/issues/1439#issuecomment-1106208294
