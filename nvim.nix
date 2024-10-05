@@ -48,6 +48,7 @@
   ## copy the config files
   xdg.configFile = {
     "nvim" = {
+      # FIX: use variables for path instead of string
       source = config.lib.file.mkOutOfStoreSymlink "/home/parkin/.dotfiles/config/nvim";
       recursive = true;
     };

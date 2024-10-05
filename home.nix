@@ -43,6 +43,9 @@
     ## tmux
     pkgs.tmux
 
+    ## just for project-specific commands
+    pkgs.just
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -99,20 +102,17 @@
   ## My programs
   programs.bash = {
     enable = true;
-    bashrcExtra = ''
-      eval "$(starship init bash)"
-    '';
     shellAliases = {
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
       "~" = "cd ~";
-      cddot = "cd ~/.dotfiles"; # TODO use variable for dotfiles path
+      cddot = "cd ~/.dotfiles"; # FIX: use variable for dotfiles path
       # Reload the shell (i.e. invoke as a login shell)
-      "reload" = "exec $SHELL -l";
+      reload = "exec $SHELL -l";
       # Print each PATH entry on a separate line
-      "path" = "echo -e \${PATH//:/\\n}";
+      path = "echo -e \${PATH//:/\\n}";
       # Git stuff
       ga = "git add";
       gc = "git commit";
@@ -151,7 +151,13 @@
     enable = true;
   };
   xdg.configFile."starship.toml" = {
+    # FIX: use variables for dotfiles
     source = config.lib.file.mkOutOfStoreSymlink "/home/parkin/.dotfiles/config/starship.toml";
+  };
+  programs.bash = {
+    bashrcExtra = ''
+      eval "$(starship init bash)"
+    '';
   };
   ############ /Starship
 
