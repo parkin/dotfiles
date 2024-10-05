@@ -1,6 +1,9 @@
 {
   description = "My Home Manager flake";
 
+  ## Note that i'm finding nix-starter-configs to be very helpful
+  # https://github.com/Misterio77/nix-starter-configs
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
@@ -37,6 +40,17 @@
 
           modules = [ ./home-manager/home.nix ];
 
+        };
+      };
+
+      ## NixOS config entrypoint
+      # Available through `nixos-rebuild --flake .#your-hostname`
+      nixosConfigurations = {
+        ${galacticboi-host} = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./nixos/configuration.nix ];
         };
       };
 
