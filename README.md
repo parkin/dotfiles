@@ -4,21 +4,24 @@
 
 Clone this repo into your `~/.dotfiles` directory.
 
-This flake is set up run as `home-manager`.
-So to run `home-manager switch`, the first time we need to run
+If you don't see `home-manager` command available, try
 
 ```shell
-nix run . -- switch --flake .
+nix shell nixpkgs#home-manager
 ```
 
-This will install `home-manager` if not already installed.
-
 ## Normal usage
+
+First, we need the build deps defined in [./flake.nix](./flake.nix) (eg `just`), so start the develop shell with
+
+```shell
+nix develop
+```
 
 After this, we can run `home-manager swtch` using
 
 ```shell
-just switch
+just home home-switch-galacticboi
 ```
 
 See [justfile](./justfile) for aliases.

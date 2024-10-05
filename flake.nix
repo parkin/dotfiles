@@ -23,8 +23,18 @@
       inherit (self) outputs;
       username = "parkin";
       galacticboi-host = "galacticboi-nixos";
+      galacticboi-system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${galacticboi-system};
     in
     {
+
+      devShells.${galacticboi-system}.default =
+        with pkgs;
+        mkShell {
+          buildInputs = [
+            just
+          ];
+        };
 
       ## Standalone home-manager config entrypoint.
       # Available through `home-manager --flake .#your-username@your-hostname`

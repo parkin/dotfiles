@@ -50,7 +50,7 @@ in
     pkgs.tmux
 
     ## just for project-specific commands
-    pkgs.just
+    # pkgs.just
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
