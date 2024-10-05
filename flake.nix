@@ -35,7 +35,7 @@
             inherit inputs outputs;
           };
 
-          modules = [ ./home.nix ];
+          modules = [ ./home-manager/home.nix ];
 
         };
       };
