@@ -26,9 +26,6 @@
     in
     {
 
-      # for `nix run .` enablement
-      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-
       ## Standalone home-manager config entrypoint.
       # Available through `home-manager --flake .#your-username@your-hostname`
       homeConfigurations = {
