@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  dotfilesPath, # my custom arg for custom path to unbuilt dotfiles /home/parkin/.dotfiles
   ...
 }:
 {
@@ -48,8 +49,7 @@
   ## copy the config files
   xdg.configFile = {
     "nvim" = {
-      # FIX: use variables for path instead of string
-      source = config.lib.file.mkOutOfStoreSymlink "/home/parkin/.dotfiles/config/nvim";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/nvim";
       recursive = true;
     };
   };

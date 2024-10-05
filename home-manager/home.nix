@@ -1,8 +1,14 @@
-{
+args@{
   config,
   pkgs,
   ...
 }:
+let
+  username = "parkin";
+  homeDirectory = "/home/parkin";
+  dotfilesDir = ".dotfiles";
+  dotfilesPath = "${homeDirectory}/${dotfilesDir}";
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -93,7 +99,10 @@
   #
 
   ## neovim import
-  imports = [ ./programs/nvim.nix ];
+  imports = [
+    # this syntax to pass argument dotfilesPath to this import
+    (import ./programs/nvim.nix (args // { dotfilesPath = dotfilesPath; }))
+  ];
 
   ## My programs
   programs.bash = {
@@ -104,7 +113,7 @@
       "...." = "cd ../../..";
       "....." = "cd ../../../..";
       "~" = "cd ~";
-      cddot = "cd ~/.dotfiles"; # FIX: use variable for dotfiles path
+      cddot = "cd ~/${dotfilesDir}";
       # Reload the shell (i.e. invoke as a login shell)
       reload = "exec $SHELL -l";
       # Print each PATH entry on a separate line
@@ -147,8 +156,7 @@
     enable = true;
   };
   xdg.configFile."starship.toml" = {
-    # FIX: use variables for dotfiles
-    source = config.lib.file.mkOutOfStoreSymlink "/home/parkin/.dotfiles/config/starship.toml";
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/starship.toml";
   };
   programs.bash = {
     bashrcExtra = ''
