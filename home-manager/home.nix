@@ -46,8 +46,11 @@ in
     ## obsidian md
     pkgs.obsidian
 
+    ########## Shell tools
     ## tmux
     pkgs.tmux
+    pkgs.eza
+    ##################
 
     ## just for project-specific commands
     # pkgs.just
@@ -98,10 +101,12 @@ in
   #  /etc/profiles/per-user/parkin/etc/profile.d/hm-session-vars.sh
   #
 
-  ## neovim import
   imports = [
     # this syntax to pass argument dotfilesPath to this import
+    # Neovim setup
     (import ./programs/nvim.nix (args // { dotfilesPath = dotfilesPath; }))
+    # fzf setup
+    ./programs/fzf.nix
   ];
 
   ## My programs
@@ -158,11 +163,11 @@ in
   xdg.configFile."starship.toml" = {
     source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/starship.toml";
   };
-  programs.bash = {
-    bashrcExtra = ''
-      eval "$(starship init bash)"
-    '';
-  };
+  # programs.bash = {
+  #   initExtra = ''
+  #     eval "$(starship init bash)"
+  #   '';
+  # };
   ############ /Starship
 
   nix = {
