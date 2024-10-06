@@ -19,11 +19,14 @@
 
   home.packages = [
 
-    ## tmux
-    pkgs.tmux
-    ## tldr -- modern man pages
+    # fd, modern find
+    pkgs.fd
     # tlrc is the Rust client for tldr (which is npm)
     pkgs.tlrc
+    ## tmux
+    pkgs.tmux
+    # ripgrep, modern grep
+    pkgs.ripgrep
 
     ## Nerdfonts
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
