@@ -38,6 +38,21 @@ in
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
+  imports = [
+    # this syntax to pass argument dotfilesPath to this import
+    # Neovim setup
+    (import ./programs/nvim.nix (args // { dotfilesPath = dotfilesPath; }))
+
+    # full terminal setup done in this file
+    (import ./terminal/terminal.nix (
+      args
+      // {
+        dotfilesDir = dotfilesDir;
+        dotfilesPath = dotfilesPath;
+      }
+    ))
+  ];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -45,21 +60,6 @@ in
 
     ## obsidian md
     pkgs.obsidian
-
-    ########## Shell tools
-    ## tmux
-    pkgs.tmux
-    pkgs.eza
-    ##################
-
-    ## just for project-specific commands
-    # pkgs.just
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -100,75 +100,6 @@ in
   #
   #  /etc/profiles/per-user/parkin/etc/profile.d/hm-session-vars.sh
   #
-
-  imports = [
-    # this syntax to pass argument dotfilesPath to this import
-    # Neovim setup
-    (import ./programs/nvim.nix (args // { dotfilesPath = dotfilesPath; }))
-    # fzf setup
-    ./programs/fzf.nix
-  ];
-
-  ## My programs
-  programs.bash = {
-    enable = true;
-    shellAliases = {
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      "...." = "cd ../../..";
-      "....." = "cd ../../../..";
-      "~" = "cd ~";
-      cddot = "cd ~/${dotfilesDir}";
-      # Reload the shell (i.e. invoke as a login shell)
-      reload = "exec $SHELL -l";
-      # Print each PATH entry on a separate line
-      path = "echo -e \${PATH//:/\\n}";
-      # Git stuff
-      ga = "git add";
-      gc = "git commit";
-      gcm = "git commit -m";
-      gs = "git status";
-      gd = "git diff";
-      gf = "git fetch";
-      gm = "git merge";
-      gr = "git rebase";
-      gp = "git push";
-      gu = "git unstage";
-      gco = "git checkout";
-      gb = "git branch";
-    };
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Will Parkin";
-    userEmail = "wmparkin@gmail.com";
-    extraConfig = {
-      branch.autosetupmerge = true;
-      color.ui = "auto";
-      diff.tool = "vimdiff";
-      init.defaultBranch = "main";
-      pull.rebase = true;
-    };
-  };
-
-  programs.kitty = {
-    enable = true;
-  };
-
-  ############ Starship
-  programs.starship = {
-    enable = true;
-  };
-  xdg.configFile."starship.toml" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/starship.toml";
-  };
-  # programs.bash = {
-  #   initExtra = ''
-  #     eval "$(starship init bash)"
-  #   '';
-  # };
-  ############ /Starship
 
   nix = {
     package = pkgs.nix;
