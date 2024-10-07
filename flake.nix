@@ -10,7 +10,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # in-nix.url = "github:viperML/in-nix";
   };
 
   outputs =
@@ -28,8 +27,6 @@
       pkgs = nixpkgs.legacyPackages.${galacticboi-system};
     in
     {
-
-      # inputs.in-nix.packages.x86_64-linux.default.patchNix = pkgs.nix;
 
       devShells.${galacticboi-system}.default =
         with pkgs;
