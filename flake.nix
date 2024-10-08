@@ -39,6 +39,7 @@
       ## Standalone home-manager config entrypoint.
       # Available through `home-manager --flake .#your-username@your-hostname`
       homeConfigurations = {
+        ## standard installation
         "${username}@${galacticboi-host}" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "x86_64-linux"; };
           extraSpecialArgs = {
@@ -46,6 +47,19 @@
           };
 
           modules = [ ./home-manager/home.nix ];
+
+        };
+
+        "parkin@wsl-nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+
+          modules = [
+            ./home-manager/home.nix
+            ./home-manager/programs/vscode/vscode-wsl.nix # vscode extensions for wsl
+          ];
 
         };
       };

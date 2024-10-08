@@ -27,6 +27,8 @@
     pkgs.tmux
     # ripgrep, modern grep
     pkgs.ripgrep
+    # wget, needed for vscode
+    pkgs.wget
 
     ## Nerdfonts
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
