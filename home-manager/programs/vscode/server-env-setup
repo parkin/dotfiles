@@ -1,3 +1,6 @@
+# This file was copied (and only slightly modified) from:
+# https://github.com/sonowz/vscode-remote-wsl-nixos/blob/master/server-env-setup
+#
 # This shell script is run before checking for vscode version updates.
 # If a newer version is downloaded, this script won't patch that version,
 # resulting in error. Therefore retry is required to patch it.
