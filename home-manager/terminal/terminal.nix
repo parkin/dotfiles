@@ -1,9 +1,9 @@
 ## This file is for configuring the terminal / shell / etc...
-{
+args@{
   config,
   pkgs,
   dotfilesDir, # name of dotfiles dir, eg ".dotfiles"
-  dotfilesPath, # full path to ~/.dotfiles directory
+  dotfilesPath,
   ...
 }:
 {
@@ -17,6 +17,8 @@
     ./bat.nix
     # tmux
     ./tmux
+    # starship module
+    (import ./starship (args // { dotfilesPath = dotfilesPath; }))
   ];
 
   home.packages = [
@@ -25,8 +27,6 @@
     pkgs.fd
     # tlrc is the Rust client for tldr (which is npm)
     pkgs.tlrc
-    ## tmux
-    # pkgs.tmux
     # ripgrep, modern grep
     pkgs.ripgrep
     # wget, needed for vscode
@@ -82,14 +82,5 @@
   programs.kitty = {
     enable = true;
   };
-
-  ############ Starship
-  programs.starship = {
-    enable = true;
-  };
-  xdg.configFile."starship.toml" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/homedir/config/starship.toml";
-  };
-  ############ /Starship
 
 }
