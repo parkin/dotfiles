@@ -15,6 +15,8 @@
     ./eza.nix
     # bat is modern version of cat
     ./bat.nix
+    # tmux
+    ./tmux
   ];
 
   home.packages = [
@@ -24,7 +26,7 @@
     # tlrc is the Rust client for tldr (which is npm)
     pkgs.tlrc
     ## tmux
-    pkgs.tmux
+    # pkgs.tmux
     # ripgrep, modern grep
     pkgs.ripgrep
     # wget, needed for vscode
