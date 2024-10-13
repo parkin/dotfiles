@@ -40,6 +40,31 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    # molten.nvim settings below
+    # whatever other neovim configuration you have
+    # plugins = with pkgs.vimPlugins; [
+    #   # ... other plugins
+    #   image-nvim # for image rendering
+    #   molten-nvim
+    # ];
+    # extraPackages = with pkgs; [
+    #   # ... other packages
+    #   imagemagick # for image rendering
+    # ];
+    # extraLuaPackages = ps: [
+    #   # ... other lua packages
+    #   # magick # for image rendering
+    # ];
+    # extraPython3Packages =
+    #   ps: with ps; [
+    #     # ... other python packages
+    #     pynvim
+    #     jupyter-client
+    #     cairosvg # for image rendering
+    #     pnglatex # for image rendering
+    #     plotly # for image rendering
+    #     pyperclip
+    #   ];
   };
 
   home.sessionVariables = {
@@ -49,7 +74,7 @@
   ## copy the config files
   xdg.configFile = {
     "nvim" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/config/nvim";
+      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/homedir/config/nvim";
       recursive = true;
     };
   };
