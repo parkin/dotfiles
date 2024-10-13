@@ -3,6 +3,7 @@
 ## Initial Setup
 
 Clone this repo into your `~/.dotfiles` directory.
+Note that this flake is impure, because it does reference absolute path of the neovim subdirectory here, in order to use `mkOutOfStoreSymlink` to symlink neovim config to this folder.
 
 If you don't see `home-manager` command available, try
 
