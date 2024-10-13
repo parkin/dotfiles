@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  dotfilesPath,
   ...
 }:
 {
@@ -16,7 +15,7 @@
       enable = true;
     };
     xdg.configFile."starship.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/home-manager/terminal/starship/starship.toml";
+      source = ./starship.toml;
     };
   };
 }

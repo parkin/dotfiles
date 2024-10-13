@@ -18,7 +18,7 @@ args@{
     # tmux
     ./tmux
     # starship module
-    (import ./starship (args // { dotfilesPath = dotfilesPath; }))
+    ./starship
   ];
 
   home.packages = [
