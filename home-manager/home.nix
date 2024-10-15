@@ -53,6 +53,12 @@ in
     ))
   ];
 
+  ## Options for my personal modules.
+  ## These options are defined in the modules imported above.
+  myHomeManager = {
+    neovim.enable = true;
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [

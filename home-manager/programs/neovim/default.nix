@@ -7,12 +7,10 @@
 }:
 {
   options = {
-    neovim.enable = lib.mkEnableOption "Enable neovim" // {
-      default = true;
-    };
+    myHomeManager.neovim.enable = lib.mkEnableOption "Enable neovim";
 
   };
-  config = lib.mkIf config.neovim.enable {
+  config = lib.mkIf config.myHomeManager.neovim.enable {
 
     home.packages = [
       ############### lazyvim setup
