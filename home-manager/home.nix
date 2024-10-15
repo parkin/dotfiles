@@ -41,7 +41,7 @@ in
   imports = [
     # this syntax to pass argument dotfilesPath to this import
     # Neovim setup
-    (import ./programs/nvim.nix (args // { dotfilesPath = dotfilesPath; }))
+    (import ./programs/neovim (args // { dotfilesPath = dotfilesPath; }))
 
     # full terminal setup done in this file
     (import ./terminal/terminal.nix (
