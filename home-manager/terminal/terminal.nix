@@ -25,6 +25,8 @@ args@{
 
     # fd, modern find
     pkgs.fd
+    # list files - terminal file manager
+    pkgs.lf
     # tlrc is the Rust client for tldr (which is npm)
     pkgs.tlrc
     # ripgrep, modern grep
