@@ -24,9 +24,6 @@ in
     # base config
     ../base.nix
     # this syntax to pass argument dotfilesPath to this import
-    # Neovim setup
-    (import ../../modules/features/neovim (args // { dotfilesPath = dotfilesPath; }))
-
     # full terminal setup done in this file
     ../../modules
     # vscode extensions for wsl
@@ -37,7 +34,6 @@ in
   ## These options are defined in the modules imported above.
   myHomeManager = {
     bundles.terminal.enable = true;
-    neovim.enable = true;
     # paths for use in these modules (eg neovim and terminal)
     dotfilesPath = dotfilesPath;
   };

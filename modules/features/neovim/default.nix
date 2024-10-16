@@ -7,7 +7,6 @@
 {
   options = {
     myHomeManager.neovim.enable = lib.mkEnableOption "Enable neovim";
-
   };
   config = lib.mkIf config.myHomeManager.neovim.enable {
 

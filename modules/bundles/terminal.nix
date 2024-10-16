@@ -16,6 +16,8 @@
     ../features/fzf.nix
     # list files - terminal file manager
     ../features/lf
+    # neovim
+    ../features/neovim
     # starship module
     ../features/starship
     # tmux
@@ -28,9 +30,10 @@
 
   config = lib.mkIf config.myHomeManager.bundles.terminal.enable {
 
-    # for my home manager modules
+    # config for my home manager modules
     myHomeManager = {
       lf.enable = true;
+      neovim.enable = true;
       tmux.enable = true;
     };
 
