@@ -9,24 +9,29 @@ args@{
 {
   # imports for programs requiring special setup
   imports = [
-    # fzf setup
-    ./fzf.nix
-    # eza setup (modern `ls`)
-    ./eza.nix
     # bat is modern version of cat
     ./bat.nix
-    # tmux
-    ./tmux
+    # eza setup (modern `ls`)
+    ./eza.nix
+    # fzf setup
+    ./fzf.nix
+    # list files - terminal file manager
+    ./lf
     # starship module
     ./starship
+    # tmux
+    ./tmux
   ];
+
+  # for my home manager configs
+  myHomeManager = {
+    lf.enable = true;
+  };
 
   home.packages = [
 
     # fd, modern find
     pkgs.fd
-    # list files - terminal file manager
-    pkgs.lf
     # tlrc is the Rust client for tldr (which is npm)
     pkgs.tlrc
     # ripgrep, modern grep

@@ -73,6 +73,14 @@
           };
           modules = [ ./nixos/configuration.nix ];
         };
+
+        wsl = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [ ./nixos/configuration.nix ];
+        };
+
       };
 
     };
