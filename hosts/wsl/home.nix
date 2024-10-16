@@ -28,13 +28,7 @@ in
     (import ../../modules/features/neovim (args // { dotfilesPath = dotfilesPath; }))
 
     # full terminal setup done in this file
-    (import ../../modules/bundles/terminal.nix (
-      args
-      // {
-        dotfilesDir = dotfilesDir;
-        dotfilesPath = dotfilesPath;
-      }
-    ))
+    ../../modules/bundles/terminal.nix
     # vscode extensions for wsl
     ../../modules/features/vscode-wsl/vscode-wsl.nix
   ];
@@ -42,7 +36,10 @@ in
   ## Options for my personal modules.
   ## These options are defined in the modules imported above.
   myHomeManager = {
+    bundles.terminal.enable = true;
     neovim.enable = true;
+    # paths for use in these modules (eg neovim and terminal)
+    dotfilesPath = dotfilesPath;
   };
 
   # The home.packages option allows you to install Nix packages into your
