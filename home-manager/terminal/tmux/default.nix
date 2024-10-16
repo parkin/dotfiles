@@ -6,11 +6,9 @@
 }:
 {
   options = {
-    tmux.enable = lib.mkEnableOption "Enables tmux" // {
-      default = true;
-    };
+    myHomeManager.tmux.enable = lib.mkEnableOption "Enables tmux";
   };
-  config = lib.mkIf config.tmux.enable {
+  config = lib.mkIf config.myHomeManager.tmux.enable {
 
     home.packages = [
       pkgs.tmux

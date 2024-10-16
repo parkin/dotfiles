@@ -1,9 +1,7 @@
 ## This file is for configuring the terminal / shell / etc...
-args@{
-  config,
+{
   pkgs,
   dotfilesDir, # name of dotfiles dir, eg ".dotfiles"
-  dotfilesPath,
   ...
 }:
 {
@@ -23,9 +21,10 @@ args@{
     ./tmux
   ];
 
-  # for my home manager configs
+  # for my home manager modules
   myHomeManager = {
     lf.enable = true;
+    tmux.enable = true;
   };
 
   home.packages = [
