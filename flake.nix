@@ -46,7 +46,7 @@
             inherit inputs outputs;
           };
 
-          modules = [ ./home-manager/home.nix ];
+          modules = [ ./hosts/laptop/home.nix ];
 
         };
 
@@ -56,10 +56,7 @@
             inherit inputs outputs;
           };
 
-          modules = [
-            ./home-manager/home.nix
-            ./home-manager/programs/vscode/vscode-wsl.nix # vscode extensions for wsl
-          ];
+          modules = [ ./hosts/wsl/home.nix ];
 
         };
       };
