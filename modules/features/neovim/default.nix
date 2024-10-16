@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  dotfilesPath, # my custom arg for custom path to unbuilt dotfiles /home/parkin/.dotfiles
   ...
 }:
 {
@@ -81,7 +80,7 @@
     ## copy the config files
     xdg.configFile = {
       "nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/features/neovim/nvim";
+        source = config.lib.file.mkOutOfStoreSymlink "${config.myHomeManager.dotfilesPath}/modules/features/neovim/nvim";
         recursive = true;
       };
     };

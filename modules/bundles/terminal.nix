@@ -24,10 +24,6 @@
 
   options = {
     myHomeManager.bundles.terminal.enable = lib.mkEnableOption "Enables my terminal bundle";
-    myHomeManager.dotfilesPath = lib.mkOption {
-      description = "Full absolute path to dotfiles directory";
-      type = lib.types.path;
-    };
   };
 
   config = lib.mkIf config.myHomeManager.bundles.terminal.enable {

@@ -28,7 +28,7 @@ in
     (import ../../modules/features/neovim (args // { dotfilesPath = dotfilesPath; }))
 
     # full terminal setup done in this file
-    ../../modules/bundles/terminal.nix
+    ../../modules
     # vscode extensions for wsl
     ../../modules/features/vscode-wsl/vscode-wsl.nix
   ];
