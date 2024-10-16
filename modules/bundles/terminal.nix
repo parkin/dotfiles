@@ -84,8 +84,9 @@
 
     programs.git = {
       enable = true;
-      userName = "Will Parkin";
-      userEmail = "wmparkin@gmail.com";
+      # set the git userName and userEmail in the host's home.nix
+      # userName = "Will Parkin";
+      # userEmail = "wmparkin@gmail.com";
       extraConfig = {
         branch.autosetupmerge = true;
         color.ui = "auto";
