@@ -22,24 +22,16 @@ in
   imports = [
     # base config to enable flakes and such
     ../base.nix
-    # this syntax to pass argument dotfilesPath to this import
-    # Neovim setup
-    (import ../../modules/features/neovim (args // { dotfilesPath = dotfilesPath; }))
-
-    # full terminal setup done in this file
-    (import ../../modules/bundles/terminal/terminal.nix (
-      args
-      // {
-        dotfilesDir = dotfilesDir;
-        dotfilesPath = dotfilesPath;
-      }
-    ))
+    # my config modules
+    ../../modules
   ];
 
   ## Options for my personal modules.
   ## These options are defined in the modules imported above.
   myHomeManager = {
-    neovim.enable = true;
+    bundles.terminal.enable = true;
+    # paths for use in these modules (eg neovim and terminal)
+    dotfilesPath = dotfilesPath;
   };
 
   # The home.packages option allows you to install Nix packages into your

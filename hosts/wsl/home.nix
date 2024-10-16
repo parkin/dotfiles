@@ -23,8 +23,7 @@ in
   imports = [
     # base config
     ../base.nix
-    # this syntax to pass argument dotfilesPath to this import
-    # full terminal setup done in this file
+    # my config modules
     ../../modules
     # vscode extensions for wsl
     ../../modules/features/vscode-wsl/vscode-wsl.nix
