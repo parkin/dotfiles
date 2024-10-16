@@ -25,10 +25,10 @@ in
     ../base.nix
     # this syntax to pass argument dotfilesPath to this import
     # Neovim setup
-    (import ../../home-manager/programs/neovim (args // { dotfilesPath = dotfilesPath; }))
+    (import ../../modules/features/neovim (args // { dotfilesPath = dotfilesPath; }))
 
     # full terminal setup done in this file
-    (import ../../home-manager/terminal/terminal.nix (
+    (import ../../modules/bundles/terminal.nix (
       args
       // {
         dotfilesDir = dotfilesDir;
@@ -36,7 +36,7 @@ in
       }
     ))
     # vscode extensions for wsl
-    ../../home-manager/programs/vscode/vscode-wsl.nix
+    ../../modules/features/vscode-wsl/vscode-wsl.nix
   ];
 
   ## Options for my personal modules.

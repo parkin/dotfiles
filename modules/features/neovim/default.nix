@@ -81,7 +81,7 @@
     ## copy the config files
     xdg.configFile = {
       "nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/home-manager/programs/neovim/nvim";
+        source = config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/modules/features/neovim/nvim";
         recursive = true;
       };
     };

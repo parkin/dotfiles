@@ -24,10 +24,10 @@ in
     ../base.nix
     # this syntax to pass argument dotfilesPath to this import
     # Neovim setup
-    (import ../../home-manager/programs/neovim (args // { dotfilesPath = dotfilesPath; }))
+    (import ../../modules/features/neovim (args // { dotfilesPath = dotfilesPath; }))
 
     # full terminal setup done in this file
-    (import ../../home-manager/terminal/terminal.nix (
+    (import ../../modules/bundles/terminal/terminal.nix (
       args
       // {
         dotfilesDir = dotfilesDir;

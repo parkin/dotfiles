@@ -8,17 +8,17 @@
   # imports for programs requiring special setup
   imports = [
     # bat is modern version of cat
-    ./bat.nix
+    ../features/bat.nix
     # eza setup (modern `ls`)
-    ./eza.nix
+    ../features/eza.nix
     # fzf setup
-    ./fzf.nix
+    ../features/fzf.nix
     # list files - terminal file manager
-    ./lf
+    ../features/lf
     # starship module
-    ./starship
+    ../features/starship
     # tmux
-    ./tmux
+    ../features/tmux
   ];
 
   # for my home manager modules
