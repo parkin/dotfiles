@@ -5,7 +5,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -20,7 +21,7 @@
 
   ## kernel params to fix Samsung Galaxybook 2 Pro brightness issue
   ## https://discourse.nixos.org/t/brightness-not-changing/34231
-  boot.kernelParams = ["i915.enable_dpcd_backlight=3"];
+  boot.kernelParams = [ "i915.enable_dpcd_backlight=3" ];
 
   networking.hostName = "galacticboi-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -89,7 +90,10 @@
   users.users.parkin = {
     isNormalUser = true;
     description = "Will Parkin";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       #  thunderbird
     ];
@@ -97,6 +101,13 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libxcrypt
+    ];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
