@@ -18,7 +18,11 @@ return {
           },
           python = {
             -- command = { "python3" }, -- or { "ipython", "--no-autoindent" }
-            command = { "jupyter-console" },
+            command = {
+              "jupyter-console",
+              -- "--existing",
+              "--ZMQTerminalInteractiveShell.image_handler=None",
+            },
             format = require("iron.fts.common").bracketed_paste_python,
             block_deviders = { "# %%", "#%%" },
           },
