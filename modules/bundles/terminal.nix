@@ -55,6 +55,9 @@
     ## My programs
     programs.bash = {
       enable = true;
+      bashrcExtra = ''
+        export BROWSER='/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
+      '';
       shellAliases = {
         ".." = "cd ..";
         "..." = "cd ../..";
