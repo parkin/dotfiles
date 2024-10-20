@@ -9,6 +9,6 @@ return {
     escape_quit = true,
   },
   keys = {
-    { "<leader>fl", "<cmd>Lf<cr>", desc = "LF File Manager" },
+    { "<leader>flf", "<cmd>Lf<cr>", desc = "LF File Manager" },
   },
 }
