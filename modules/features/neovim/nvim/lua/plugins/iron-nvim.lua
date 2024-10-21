@@ -61,6 +61,8 @@ return {
     })
 
     -- iron also has a list of commands, see :h iron-commands for all available commands
+    local wk = require("which-key")
+    wk.add({ "<leader>i", group = "Iron repl" })
     vim.keymap.set("n", "<leader>ii", "<cmd>IronRepl<cr>")
     vim.keymap.set("n", "<leader>ir", "<cmd>IronRestart<cr>")
     vim.keymap.set("n", "<leader>if", "<cmd>IronFocus<cr>")
