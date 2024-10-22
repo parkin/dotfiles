@@ -18,6 +18,13 @@ in
   programs.git.userName = "Will Parkin";
   programs.git.userEmail = "parkin@ibm.com";
 
+  programs.bash.sessionVariables = {
+    # Set extra variables for Plotly to render in the Windows browser.
+    # see https://plotly.com/python/renderers/
+    BROWSER = ''/mnt/c/Program Files/Mozilla Firefox/firefox.exe'';
+    PLOTLY_RENDERER = "browser";
+  };
+
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
