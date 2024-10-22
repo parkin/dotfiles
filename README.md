@@ -34,3 +34,7 @@ Use the following to upgrade the flake.
 ```shell
 nix flake update
 ```
+
+## Neovim
+
+See [my neovim setup](./modules/features/neovim/README.md)
