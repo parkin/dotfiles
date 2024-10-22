@@ -6,6 +6,22 @@ return {
     init = function()
       -- this is an example, not a default. Please see the readme for more configuration options
       vim.g.molten_output_win_max_height = 12
+      vim.keymap.set("n", "<localleader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
+      vim.keymap.set("n", "<localleader>ml", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
+      vim.keymap.set("n", "<localleader>mr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
+      vim.keymap.set(
+        "v",
+        "<localleader>mv",
+        ":<C-u>MoltenEvaluateVisual<CR>gv",
+        { silent = true, desc = "evaluate visual selection" }
+      )
+      vim.keymap.set("n", "<localleader>moh", ":MoltenHideOutput<CR>", { silent = true, desc = "hide output" })
+      vim.keymap.set(
+        "n",
+        "<localleader>mos",
+        ":noautocmd MoltenEnterOutput<CR>",
+        { silent = true, desc = "show/enter output" }
+      )
     end,
   },
   {
@@ -27,9 +43,9 @@ return {
           require("notebook-navigator").move_cell("u")
         end,
       },
-      { "<leader>mc", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
-      { "<leader>mn", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
-      { "<leader>mA", "<cmd>lua require('notebook-navigator').run_cells_above()<cr>" },
+      { "<localleader>mc", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
+      { "<localleader>mn", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
+      { "<localleader>mA", "<cmd>lua require('notebook-navigator').run_cells_above()<cr>" },
     },
     dependencies = {
       "echasnovski/mini.comment",
