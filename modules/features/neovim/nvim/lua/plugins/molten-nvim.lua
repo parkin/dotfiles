@@ -6,6 +6,9 @@ return {
     init = function()
       -- this is an example, not a default. Please see the readme for more configuration options
       vim.g.molten_output_win_max_height = 12
+      -- disable auto ouput (hoping this speeds things up?)
+      vim.g.molten_auto_open_output = false
+      -- keymaps
       vim.keymap.set("n", "<localleader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
       vim.keymap.set("n", "<localleader>ml", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
       vim.keymap.set("n", "<localleader>mr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
