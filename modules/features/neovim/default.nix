@@ -26,7 +26,8 @@
       ## for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
       pkgs.lua-language-server
       pkgs.marksman
-      pkgs.nil # nix
+      # pkgs.nil # nix
+      pkgs.nixd # nix
       pkgs.pyright
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       pkgs.nixfmt-rfc-style
