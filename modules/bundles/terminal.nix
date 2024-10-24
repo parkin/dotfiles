@@ -22,6 +22,8 @@
     ../features/starship
     # tmux
     ../features/tmux
+    # yazi terminal file manager
+    ../features/yazi
   ];
 
   options = {
@@ -35,6 +37,7 @@
       lf.enable = true;
       neovim.enable = true;
       tmux.enable = true;
+      yazi.enable = true;
     };
 
     home.packages = [
