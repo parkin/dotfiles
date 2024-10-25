@@ -40,6 +40,7 @@ return {
           },
         },
         pyright = {},
+        taplo = {},
       },
     },
   },

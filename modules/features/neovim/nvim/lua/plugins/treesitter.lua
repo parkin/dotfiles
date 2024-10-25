@@ -6,8 +6,12 @@ return {
     indent = { enable = true },
     ensure_installed = {
       "just",
+      "lua",
       "markdown",
       "markdown_inline",
+      "nix",
+      "python",
+      "toml",
     },
   },
 }
