@@ -10,33 +10,33 @@
   };
   config = lib.mkIf config.myHomeManager.neovim.enable {
 
-    home.packages = [
+    home.packages = with pkgs; [
       ############### lazyvim setup
       ### Base lazyvim
-      pkgs.wl-clipboard # for clipboard on wayland
-      pkgs.gcc
-      pkgs.ripgrep
-      pkgs.fd
-      pkgs.luarocks
-      pkgs.unzip
-      pkgs.lazygit
-      pkgs.nodejs_22
-      pkgs.python3
-      pkgs.cargo
+      wl-clipboard # for clipboard on wayland
+      gcc
+      ripgrep
+      fd
+      luarocks
+      unzip
+      lazygit
+      nodejs_22
+      python3
+      cargo
       ## for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
-      pkgs.lua-language-server
-      pkgs.marksman
+      lua-language-server
+      marksman
       # pkgs.nil # nix
-      pkgs.nixd # nix
-      pkgs.pyright
+      nixd # nix
+      pyright
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
-      pkgs.nixfmt-rfc-style
-      pkgs.black
-      pkgs.prettierd
-      pkgs.markdownlint-cli2
-      pkgs.vimPlugins.vim-markdown-toc
-      pkgs.stylua
-      pkgs.taplo
+      nixfmt-rfc-style
+      black
+      prettierd
+      markdownlint-cli2
+      vimPlugins.vim-markdown-toc
+      stylua
+      taplo
       ############### /lazyvim setup
     ];
 
