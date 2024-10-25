@@ -39,7 +39,17 @@ return {
             },
           },
         },
-        basedpyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                -- pandas-stubs only supports pyright basic typeCheckingMode
+                -- https://github.com/pandas-dev/pandas-stubs/issues/963#issuecomment-2248294958
+                typeCheckingMode = "basic",
+              },
+            },
+          },
+        },
         taplo = {},
       },
     },
