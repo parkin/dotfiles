@@ -28,7 +28,7 @@
       marksman
       # pkgs.nil # nix
       nixd # nix
-      pyright
+      basedpyright
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       nixfmt-rfc-style
       black

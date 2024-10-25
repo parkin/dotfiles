@@ -39,7 +39,7 @@ return {
             },
           },
         },
-        pyright = {},
+        basedpyright = {},
         taplo = {},
       },
     },
