@@ -34,7 +34,6 @@
 
     # config for my home manager modules
     myHomeManager = {
-      lf.enable = true;
       neovim.enable = true;
       tmux.enable = true;
       yazi.enable = true;
