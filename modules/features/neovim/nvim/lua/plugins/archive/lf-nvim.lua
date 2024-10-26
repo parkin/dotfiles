@@ -1,3 +1,8 @@
+-- disable this plugin by returning {}
+if true then
+  return {}
+end
+
 return {
   "lmburns/lf.nvim",
   cmd = "Lf",
