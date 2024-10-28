@@ -31,7 +31,7 @@
       basedpyright
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       nixfmt-rfc-style
-      black
+      ruff
       prettierd
       markdownlint-cli2
       vimPlugins.vim-markdown-toc
