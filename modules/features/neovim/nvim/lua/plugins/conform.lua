@@ -11,7 +11,7 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
-        python = { "ruff" },
+        python = { "ruff_format" },
         markdown = { "prettierd" },
         nix = { "nixfmt" },
         toml = { "taplo" },
