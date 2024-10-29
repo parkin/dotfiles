@@ -39,19 +39,21 @@
       yazi.enable = true;
     };
 
-    home.packages = [
+    home.packages = with pkgs; [
 
       # fd, modern find
-      pkgs.fd
+      fd
+      # neofetch is a terminal program to display system info
+      neofetch
       # tlrc is the Rust client for tldr (which is npm)
-      pkgs.tlrc
+      tlrc
       # ripgrep, modern grep
-      pkgs.ripgrep
+      ripgrep
       # wget, needed for vscode
-      pkgs.wget
+      wget
 
       ## Nerdfonts
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
 
     ## My programs
