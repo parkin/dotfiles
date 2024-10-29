@@ -1,5 +1,5 @@
 {
-  description = "My Home Manager flake";
+  description = "My Flake for NixOS and Home Manager configs";
 
   ## Note that i'm finding nix-starter-configs to be very helpful
   # https://github.com/Misterio77/nix-starter-configs
@@ -26,24 +26,15 @@
       username = "parkin";
       galacticboi-host = "galacticboi-nixos";
       galacticboi-system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${galacticboi-system};
     in
     {
-
-      devShells.${galacticboi-system}.default =
-        with pkgs;
-        mkShell {
-          buildInputs = [
-            just
-          ];
-        };
-
       ## Standalone home-manager config entrypoint.
-      # Available through `home-manager --flake .#your-username@your-hostname`
+      # Available through `nh home switch`
+      # (Also available through `home-manager --flake .#your-username@your-hostname`)
       homeConfigurations = {
         ## standard installation
         "${username}@${galacticboi-host}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          pkgs = import nixpkgs { system = "${galacticboi-system}"; };
           extraSpecialArgs = {
             inherit inputs outputs;
           };
@@ -53,7 +44,7 @@
         };
 
         "parkin@wsl-nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          pkgs = import nixpkgs { system = "${galacticboi-system}"; };
           extraSpecialArgs = {
             inherit inputs outputs;
           };
@@ -64,7 +55,8 @@
       };
 
       ## NixOS config entrypoint
-      # Available through `nixos-rebuild --flake .#your-hostname`
+      # Available through `nh os switch`
+      # (Also available without `nh` through `nixos-rebuild --flake .#your-hostname`)
       nixosConfigurations = {
         "${galacticboi-host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -73,7 +65,7 @@
           modules = [ ./hosts/laptop/configuration.nix ];
         };
 
-        "parkin@wsl-nixos" = nixpkgs.lib.nixosSystem {
+        wsl-nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;

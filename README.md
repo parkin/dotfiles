@@ -1,35 +1,49 @@
 # dotfiles
 
-## Initial Setup
+My ever-changing dotfiles repo.
+
+## Nix Config
+
+### Initial Setup
 
 Clone this repo into your `~/.dotfiles` directory.
 Note that this flake is impure, because it does reference absolute path of the neovim subdirectory here, in order to use `mkOutOfStoreSymlink` to symlink neovim config to this folder.
 
-If you don't see `home-manager` command available, try
+When starting up a new system, you may not find `home-manager` or `nh` commands available, so try
 
 ```shell
-nix shell nixpkgs#home-manager
+nix shell nixpkgs#home-manager nixpkgs#nh
 ```
 
-## Normal usage
+All the NixOs and home-manager build outputs are defined in [./flake.nix](./flake.nix).
 
-First, we need the build deps defined in [./flake.nix](./flake.nix) (eg `just`), so start the develop shell with
+### Switching
+
+I'm using [nh](https://github.com/viperML/nh) (nix helper).
+The flake path to this dotfile repo is set in the os config files (eg [./hosts/laptop/configuration.nix](./hosts/laptop/configuration.nix)), so you don't need to be in the dotfiles folder to execute the commands below.
+Also, `nh` by default uses `user@hostname` for the targets, so you also don't have to specify the targets, the following command should work as is on any of my systems.
+
+To update NixOS
 
 ```shell
-nix develop
+nh os switch
 ```
 
-After this, we can run `home-manager swtch` using
+For WSL instance, need to pass `--impure` flag, since the config references a folder in the `/mnt/c/` mount.
 
 ```shell
-just home home-switch-galacticboi
+nh os switch -- --impure
 ```
 
-See [justfile](./justfile) for aliases.
+To update home-manager
 
-After switching, you may have to run `exec $SHELL -l`, which I've aliased as `reload`.
+```shell
+nh home switch
+```
 
-Use the following to upgrade the flake.
+After home-manager switch, you may have to reload the shell with `exec $SHELL -l`, which I've aliased as `reload`.
+
+Use the following to upgrade the flake, which you should do periodically.
 
 ```shell
 nix flake update
