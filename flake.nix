@@ -10,6 +10,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs =
@@ -17,6 +18,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixos-wsl,
       ...
     }@inputs:
     let
@@ -64,18 +66,22 @@
       ## NixOS config entrypoint
       # Available through `nixos-rebuild --flake .#your-hostname`
       nixosConfigurations = {
-        ${galacticboi-host} = nixpkgs.lib.nixosSystem {
+        "${galacticboi-host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
           };
           modules = [ ./hosts/laptop/configuration.nix ];
         };
 
-        wsl = nixpkgs.lib.nixosSystem {
+        "parkin@wsl-nixos" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./hosts/wsl/configuration.nix ];
+          modules = [
+            nixos-wsl.nixosModules.default
+            ./hosts/wsl/configuration.nix
+          ];
         };
 
       };
