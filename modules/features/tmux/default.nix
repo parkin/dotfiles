@@ -10,13 +10,13 @@
   };
   config = lib.mkIf config.myHomeManager.tmux.enable {
 
-    home.packages = [
-      pkgs.tmux
+    home.packages = with pkgs; [
+      tmux
     ];
 
     # copy the config file
-    home.file = {
-      ".tmux.conf".source = ./.tmux.conf;
+    home.file.".tmux.conf" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.myHomeManager.dotfilesPath}/modules/features/tmux/.tmux.conf";
     };
   };
 }
