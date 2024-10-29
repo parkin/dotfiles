@@ -8,6 +8,8 @@
 {
   # imports for programs requiring special setup
   imports = [
+    # bash
+    ../features/bash.nix
     # bat is modern version of cat
     ../features/bat.nix
     # eza setup (modern `ls`)
@@ -34,6 +36,7 @@
 
     # config for my home manager modules
     myHomeManager = {
+      bash.enable = true;
       neovim.enable = true;
       tmux.enable = true;
       yazi.enable = true;
@@ -57,34 +60,6 @@
     ];
 
     ## My programs
-    programs.bash = {
-      enable = true;
-      shellAliases = {
-        ".." = "cd ..";
-        "..." = "cd ../..";
-        "...." = "cd ../../..";
-        "....." = "cd ../../../..";
-        "~" = "cd ~";
-        cddot = "cd ${config.myHomeManager.dotfilesPath}";
-        # Reload the shell (i.e. invoke as a login shell)
-        reload = "exec $SHELL -l";
-        # Print each PATH entry on a separate line
-        path = "echo -e \${PATH//:/\\n}";
-        # Git stuff
-        ga = "git add";
-        gc = "git commit";
-        gcm = "git commit -m";
-        gs = "git status";
-        gd = "git diff";
-        gf = "git fetch";
-        gm = "git merge";
-        gr = "git rebase";
-        gp = "git push";
-        gu = "git unstage";
-        gco = "git checkout";
-        gb = "git branch";
-      };
-    };
 
     programs.git = {
       enable = true;
