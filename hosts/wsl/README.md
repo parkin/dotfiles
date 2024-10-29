@@ -15,3 +15,5 @@ To prepare the certs you need while on your vpn, you need to run this script in 
 2. After cloning, in PowerShell run `.\get-all-certs-.ps1` to execute the script.
    The script will populate a subdirectory `all-certificates` in the git repo.
 3. [./certificates.nix](./certificates.nix) points to the `all-certificates` directory in the Windows partition so that it can include the certificates.
+4. Follow the instructions in the github repo to make a symlink to the `windows-certs-2-wsl/all-certificates` directory.
+5. Rebuild your nixos system and reboot.
