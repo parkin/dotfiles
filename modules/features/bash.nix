@@ -31,7 +31,8 @@
         gf = "git fetch";
         gm = "git merge";
         gr = "git rebase";
-        gp = "git push";
+        gP = "git push";
+        gp = "git pull";
         gu = "git unstage";
         gco = "git checkout";
         gb = "git branch";
