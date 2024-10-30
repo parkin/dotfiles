@@ -36,6 +36,9 @@
         gco = "git checkout";
         gb = "git branch";
       };
+      initExtra = ''
+        set -o vi
+      '';
     };
 
   };
