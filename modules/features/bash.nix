@@ -37,6 +37,7 @@
         gco = "git checkout";
         gb = "git branch";
       };
+      # Enable vi mode
       initExtra = ''
         set -o vi
       '';
