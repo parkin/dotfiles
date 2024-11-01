@@ -28,7 +28,7 @@ $conda\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
-$line_break$character"""
+$line_break$shell$shlvl$character"""
 
 palette = 'gruvbox_dark'
 
@@ -147,6 +147,16 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_purple)]($style)'
 symbol = ""
 style = "bg:color_purple"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_purple)]($style)'
+
+[shell]
+disabled = false
+format = '[$indicator]($style)'
+style = "color_fg0"
+
+[shlvl]
+disabled = false
+format = '[$symbol$shlvl]($style)'
+symbol = "+"
 
 [nix_shell]
 style = "bg:color_blue"
