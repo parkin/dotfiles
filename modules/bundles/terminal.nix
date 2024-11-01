@@ -30,6 +30,15 @@
 
   options = {
     myHomeManager.bundles.terminal.enable = lib.mkEnableOption "Enables my terminal bundle";
+    myHomeManager.terminal.shellAliases = lib.mkOption {
+      type = lib.types.anything;
+      description = "shellAliases to pass to bash and zsh";
+      default = { };
+      example = {
+        cd = "..";
+        ll = "ls -l";
+      };
+    };
   };
 
   config = lib.mkIf config.myHomeManager.bundles.terminal.enable {
@@ -40,6 +49,33 @@
       neovim.enable = true;
       tmux.enable = true;
       yazi.enable = true;
+
+      terminal.shellAliases = {
+        ".." = "cd ..";
+        "..." = "cd ../..";
+        "...." = "cd ../../..";
+        "....." = "cd ../../../..";
+        "~" = "cd ~";
+        cddot = "cd ${config.myHomeManager.dotfilesPath}";
+        # Reload the shell (i.e. invoke as a login shell)
+        reload = "exec $SHELL -l";
+        # Print each PATH entry on a separate line
+        path = "echo -e \${PATH//:/\\n}";
+        # Git stuff
+        ga = "git add";
+        gc = "git commit";
+        gcm = "git commit -m";
+        gs = "git status";
+        gd = "git diff";
+        gf = "git fetch";
+        gm = "git merge";
+        gr = "git rebase";
+        gP = "git push";
+        gp = "git pull";
+        gu = "git unstage";
+        gco = "git checkout";
+        gb = "git branch";
+      };
     };
 
     home.packages = with pkgs; [
