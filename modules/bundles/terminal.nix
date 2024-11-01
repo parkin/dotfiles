@@ -78,6 +78,7 @@
         gu = "git unstage";
         gco = "git checkout";
         gb = "git branch";
+        lg = "lazygit";
       };
     };
 
