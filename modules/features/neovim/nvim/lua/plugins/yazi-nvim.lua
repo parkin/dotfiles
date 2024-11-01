@@ -16,7 +16,7 @@ return {
       desc = "Open the file manager in nvim's working directory",
     },
     {
-      -- NOTE: this requires a version of yazi that includes
+      -- note this requires a version of yazi that includes
       -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
       "<leader>fyr",
       "<cmd>Yazi toggle<cr>",
