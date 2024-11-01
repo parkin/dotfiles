@@ -26,6 +26,8 @@
     ../features/tmux
     # yazi terminal file manager
     ../features/yazi
+    # zsh
+    ../features/zsh.nix
   ];
 
   options = {
@@ -49,6 +51,7 @@
       neovim.enable = true;
       tmux.enable = true;
       yazi.enable = true;
+      zsh.enable = true;
 
       terminal.shellAliases = {
         ".." = "cd ..";
