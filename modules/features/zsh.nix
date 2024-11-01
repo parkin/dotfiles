@@ -17,10 +17,7 @@
       history = {
         size = 10000;
       };
-      shellAliases = {
-        ll = "ls -l";
-        ".." = "cd ..";
-      };
+      shellAliases = config.myHomeManager.terminal.shellAliases;
     };
   };
 
