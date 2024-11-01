@@ -94,10 +94,12 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
+    packages = [ ];
   };
+
+  # set default shell to zsh
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;

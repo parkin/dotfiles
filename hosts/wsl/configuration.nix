@@ -54,6 +54,10 @@ in
     fsType = "drvfs";
   };
 
+  # make zsh default shell
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+
   # needed to use this to get pixi envs to work
   programs.nix-ld.enable = true;
 
