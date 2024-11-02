@@ -35,16 +35,18 @@ return {
     branch = "FOR_PR_README",
     keys = {
       {
-        "]h",
+        "]x",
         function()
           require("notebook-navigator").move_cell("d")
         end,
+        desc = "next cell NotebookNavigator",
       },
       {
-        "[h",
+        "[x",
         function()
           require("notebook-navigator").move_cell("u")
         end,
+        desc = "prev cell NotebookNavigator",
       },
       { "<localleader>mc", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
       { "<localleader>mn", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
