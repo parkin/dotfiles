@@ -83,6 +83,23 @@
     #media-session.enable = true;
   };
 
+  # Remap some keys
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            # capslock = "overload(control, esc)";
+            capslock = "layer(control)";
+            rightalt = "capslock";
+          };
+        };
+      };
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
