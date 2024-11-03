@@ -11,6 +11,7 @@ return {
       "markdown_inline",
       "nix",
       "python",
+      "sql",
       "toml",
     },
   },
