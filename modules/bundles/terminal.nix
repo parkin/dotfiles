@@ -16,6 +16,8 @@
     ../features/eza.nix
     # fzf setup
     ../features/fzf.nix
+    # kitty terminal
+    ../features/kitty.nix
     # list files - terminal file manager
     ../features/lf
     # neovim
@@ -48,6 +50,7 @@
     # config for my home manager modules
     myHomeManager = {
       bash.enable = true;
+      kitty.enable = true;
       neovim.enable = true;
       tmux.enable = true;
       yazi.enable = true;
@@ -113,10 +116,6 @@
         init.defaultBranch = "main";
         pull.rebase = true;
       };
-    };
-
-    programs.kitty = {
-      enable = true;
     };
 
     programs.direnv = {
