@@ -32,6 +32,11 @@
             set -g status-left ""
             set -g status-right "#{E:@catppuccin_status_application}"
             set -ag status-right "#{E:@catppuccin_status_session}"
+
+            # window status look and feel
+            set -g allow-rename off
+            set -g @catppuccin_window_default_text '#W'
+            set -g @catppuccin_window_current_text '#W'
           '';
 
         }
