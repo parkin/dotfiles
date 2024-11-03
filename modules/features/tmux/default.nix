@@ -13,7 +13,7 @@
     programs.tmux = {
       enable = true;
       baseIndex = 1;
-      shortcut = "b";
+      keyMode = "vi";
       mouse = true;
       terminal = "tmux-256color";
       plugins = with pkgs.tmuxPlugins; [
