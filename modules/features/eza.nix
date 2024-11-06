@@ -5,7 +5,6 @@ let
   ezaParams = " --git --group --icons --color=always";
   shellAliases = {
     ls = "eza" + ezaParams;
-    l = "eza --git-ignore" + ezaParams;
     ll = "eza -la --octal-permissions" + ezaParams;
     la = "eza --long --all" + ezaParams;
     lt = "eza --tree" + ezaParams;
