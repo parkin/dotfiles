@@ -36,6 +36,7 @@ in
   wsl = {
     enable = true;
     defaultUser = "${user}";
+    startMenuLaunchers = true;
     # skip path inclusion
     # not sure why we have to choose both
     interop = {
@@ -77,6 +78,8 @@ in
     neovim
     # WSL utilities
     wslu
+    # kitty system wide so we can start it
+    kitty
   ];
 
   programs.nh = {
