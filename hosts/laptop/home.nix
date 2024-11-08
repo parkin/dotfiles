@@ -38,13 +38,11 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.bitwarden-desktop
-
+  home.packages = with pkgs; [
+    anki-bin
+    bitwarden-desktop
     ## obsidian md
-    pkgs.obsidian
-
-    pkgs.anki-bin
+    obsidian
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

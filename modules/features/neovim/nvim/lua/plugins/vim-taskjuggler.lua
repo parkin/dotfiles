@@ -1,0 +1,3 @@
+return {
+  "kalafut/vim-taskjuggler",
+}

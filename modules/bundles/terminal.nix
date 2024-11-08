@@ -93,6 +93,7 @@
       neofetch
       # tlrc is the Rust client for tldr (which is npm)
       tlrc
+      taskjuggler
       # ripgrep, modern grep
       ripgrep
       # wget, needed for vscode
