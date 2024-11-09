@@ -10,6 +10,8 @@ return {
     lazy = true,
     opts = {
       formatters_by_ft = {
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
         lua = { "stylua" },
         python = { "ruff_format" },
         markdown = { "prettierd" },
