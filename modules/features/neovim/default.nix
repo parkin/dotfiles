@@ -26,9 +26,11 @@
       ## for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
       lua-language-server
       marksman
+      typescript-language-server
       # pkgs.nil # nix
       nixd # nix
       basedpyright
+      vscode-langservers-extracted # html/css/json/eslint language servers
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       nixfmt-rfc-style
       ruff
