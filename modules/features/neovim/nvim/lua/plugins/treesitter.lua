@@ -13,6 +13,7 @@ return {
       "python",
       "sql",
       "toml",
+      "typescript",
     },
   },
 }
