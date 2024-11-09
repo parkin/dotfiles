@@ -11,6 +11,19 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        -- python
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                -- pandas-stubs only supports pyright basic typeCheckingMode
+                -- https://github.com/pandas-dev/pandas-stubs/issues/963#issuecomment-2248294958
+                typeCheckingMode = "basic",
+              },
+            },
+          },
+        },
+        jsonls = {},
         lua_ls = {},
         -- marksman = {},
         -- nil_ls = {},
@@ -39,18 +52,10 @@ return {
             },
           },
         },
-        basedpyright = {
-          settings = {
-            basedpyright = {
-              analysis = {
-                -- pandas-stubs only supports pyright basic typeCheckingMode
-                -- https://github.com/pandas-dev/pandas-stubs/issues/963#issuecomment-2248294958
-                typeCheckingMode = "basic",
-              },
-            },
-          },
-        },
+        -- toml
         taplo = {},
+        -- typescript-language-server
+        ts_ls = {},
       },
     },
   },
