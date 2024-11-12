@@ -89,6 +89,7 @@
 
       # fd, modern find
       fd
+      gnumake
       # neofetch is a terminal program to display system info
       neofetch
       # tlrc is the Rust client for tldr (which is npm)
