@@ -27,10 +27,10 @@
       lua-language-server
       marksman
       typescript-language-server
-      # pkgs.nil # nix
       nixd # nix
       basedpyright
       vscode-langservers-extracted # html/css/json/eslint language servers
+      solargraph
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       nixfmt-rfc-style
       ruff
