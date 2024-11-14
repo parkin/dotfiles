@@ -12,6 +12,7 @@
 
     programs.tmux = {
       enable = true;
+      shortcut = "a";
       baseIndex = 1;
       keyMode = "vi";
       mouse = true;
