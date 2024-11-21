@@ -1,3 +1,8 @@
+-- don't load on my wsl
+if vim.loop.os_gethostname() == "wsl-nixos" then
+  return {}
+end
+
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
