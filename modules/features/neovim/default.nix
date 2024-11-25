@@ -31,6 +31,7 @@
       basedpyright
       vscode-langservers-extracted # html/css/json/eslint language servers
       solargraph
+      sqls
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       nixfmt-rfc-style
       ruff
@@ -38,6 +39,7 @@
       markdownlint-cli2
       vimPlugins.vim-markdown-toc
       stylua
+      sql-formatter
       taplo
       ############### /lazyvim setup
     ];

@@ -54,6 +54,8 @@ return {
         },
         -- ruby
         solargraph = {},
+        -- sql
+        sqls = {},
         -- toml
         taplo = {},
         -- typescript-language-server
