@@ -22,7 +22,7 @@
       lazygit
       nodejs_22
       python3
-      cargo
+      # cargo
       ## for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
       lua-language-server
       marksman
@@ -30,6 +30,7 @@
       nixd # nix
       basedpyright
       vscode-langservers-extracted # html/css/json/eslint language servers
+      # rust-analyzer # disabling to use flake instead
       solargraph
       sqls
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
@@ -38,6 +39,7 @@
       prettierd
       markdownlint-cli2
       vimPlugins.vim-markdown-toc
+      rustfmt
       stylua
       sql-formatter
       taplo

@@ -11,7 +11,9 @@ return {
       "markdown_inline",
       "nix",
       "python",
+      "ron", -- for rust object notation
       "ruby",
+      "rust",
       "sql",
       "toml",
       "typescript",

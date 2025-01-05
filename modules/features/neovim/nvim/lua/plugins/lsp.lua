@@ -11,6 +11,10 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        -- rust
+        bacon_ls = {
+          enabled = diagnostics == "bacon-ls",
+        },
         -- python
         basedpyright = {
           settings = {
@@ -52,6 +56,8 @@ return {
             },
           },
         },
+        -- rust - disable so rustacean can handle this
+        rust_analyzer = { enabled = false },
         -- ruby
         solargraph = {},
         -- sql

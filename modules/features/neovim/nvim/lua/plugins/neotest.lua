@@ -11,6 +11,7 @@ local opt = {
     },
     opts = { adapters = {
       ["neotest-python"] = {},
+      ["rustaceanvim.neotest"] = {},
     } },
   },
   -------------------------- nvim-dap

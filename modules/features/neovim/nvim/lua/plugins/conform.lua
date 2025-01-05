@@ -16,6 +16,7 @@ return {
         python = { "ruff_format" },
         markdown = { "prettierd" },
         nix = { "nixfmt" },
+        rust = { "rustfmt" },
         sql = { "sql_formatter" },
         toml = { "taplo" },
       },
