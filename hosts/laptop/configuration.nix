@@ -100,6 +100,11 @@
     };
   };
 
+  # block websites
+  networking.hosts = {
+    "127.0.0.1" = [ "lichess.org" ];
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
