@@ -47,9 +47,9 @@ in
     obsidian
 
     ## unstable packages
-    # TODO: nixpkgs 24.11, cryptomator marked broken.
-    # Need to use unstable for now.
-    # Switch to stable when fixed.
+    # TODO: nixpkgs 24.11, cryptomator 1.14.1 marked broken.
+    # Need to use unstable for now to use cryptomator 1.14.2.
+    # Switch to nixpkgs-stable when cryptomator no longer broken.
     pkgs-unstable.cryptomator
   ];
 
