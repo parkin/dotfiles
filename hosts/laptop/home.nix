@@ -1,5 +1,6 @@
 args@{
   pkgs,
+  pkgs-unstable,
   ...
 }:
 let
@@ -43,6 +44,9 @@ in
     bitwarden-desktop
     ## obsidian md
     obsidian
+
+    ## unstable packages
+    pkgs-unstable.cryptomator
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
