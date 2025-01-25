@@ -42,6 +42,7 @@ in
   home.packages = with pkgs; [
     anki-bin
     bitwarden-desktop
+    megasync
     ## obsidian md
     obsidian
 
