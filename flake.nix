@@ -36,11 +36,17 @@
       homeConfigurations = {
         ## standard installation
         "${username}@${galacticboi-host}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "${galacticboi-system}"; };
+          pkgs = import nixpkgs {
+            system = "${galacticboi-system}";
+            config.allowUnfree = true;
+          };
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
-            pkgs-unstable = import nixpkgs-unstable { system = "${galacticboi-system}"; };
+            pkgs-unstable = import nixpkgs-unstable {
+              system = "${galacticboi-system}";
+              config.allowUnfree = true;
+            };
           };
 
           modules = [ ./hosts/laptop/home.nix ];

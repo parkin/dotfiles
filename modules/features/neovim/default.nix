@@ -20,7 +20,7 @@
       luarocks
       unzip
       lazygit
-      nodejs_22
+      nodejs_latest
       python3
       # cargo
       ## for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
