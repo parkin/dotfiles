@@ -1,6 +1,7 @@
 args@{
   pkgs,
   pkgs-unstable,
+  lib,
   ...
 }:
 let
@@ -52,6 +53,27 @@ in
     # Switch to nixpkgs-stable when cryptomator no longer broken.
     pkgs-unstable.cryptomator
   ];
+
+  ######## Browser
+  programs.firefox.enable = true;
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "default-web-browser" = [ "firefox.desktop" ];
+      "text/html" = [ "firefox.desktop" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
+      "x-scheme-handler/about" = [ "firefox.desktop" ];
+      "x-scheme-handler/unknown" = [ "firefox.desktop" ];
+    };
+  };
+
+  programs.chromium = {
+    enable = true;
+  };
+
+  ######## /Browser
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
