@@ -1,7 +1,6 @@
-args@{
+{
   pkgs,
   pkgs-unstable,
-  lib,
   ...
 }:
 let
