@@ -70,6 +70,10 @@ in
 
   programs.chromium = {
     enable = true;
+    extensions = [
+      ## Yomitan Popup Dictionary
+      { id = "likgccmbimhjbgkjambclfkhldnlhbnn"; }
+    ];
   };
 
   ######## /Browser
