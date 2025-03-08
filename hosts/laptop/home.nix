@@ -32,6 +32,7 @@ in
   ## Options for my personal modules.
   ## These options are defined in the modules imported above.
   myHomeManager = {
+    anki.enable = true;
     bundles.terminal.enable = true;
     # paths for use in these modules (eg neovim and terminal)
     dotfilesPath = dotfilesPath;
@@ -40,11 +41,8 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    anki-bin
     bitwarden-desktop
     megasync
-    # media player I use with anki
-    mpv
     ## obsidian md
     obsidian
 

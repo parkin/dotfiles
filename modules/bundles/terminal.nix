@@ -8,39 +8,20 @@
 {
   # imports for programs requiring special setup
   imports = [
-    # bash
-    ../features/bash.nix
-    # bat is modern version of cat
-    ../features/bat.nix
-    # eza setup (modern `ls`)
-    ../features/eza.nix
-    # fzf setup
-    ../features/fzf.nix
-    # kitty terminal
-    ../features/kitty.nix
-    # list files - terminal file manager
-    ../features/lf
-    # neovim
-    ../features/neovim
-    # starship module
-    ../features/starship
-    # tmux
-    ../features/tmux
-    # yazi terminal file manager
-    ../features/yazi
-    # zsh
-    ../features/zsh.nix
+    ../features
   ];
 
   options = {
-    myHomeManager.bundles.terminal.enable = lib.mkEnableOption "Enables my terminal bundle";
-    myHomeManager.terminal.shellAliases = lib.mkOption {
-      type = lib.types.anything;
-      description = "shellAliases to pass to bash and zsh";
-      default = { };
-      example = {
-        cd = "..";
-        ll = "ls -l";
+    myHomeManager = {
+      bundles.terminal.enable = lib.mkEnableOption "Enables my terminal bundle";
+      terminal.shellAliases = lib.mkOption {
+        type = lib.types.anything;
+        description = "shellAliases to pass to bash and zsh";
+        default = { };
+        example = {
+          cd = "..";
+          ll = "ls -l";
+        };
       };
     };
   };
@@ -50,8 +31,12 @@
     # config for my home manager modules
     myHomeManager = {
       bash.enable = true;
+      bat.enable = true;
+      eza.enable = true;
+      fzf.enable = true;
       kitty.enable = true;
       neovim.enable = true;
+      starship.enable = true;
       tmux.enable = true;
       yazi.enable = true;
       zsh.enable = true;

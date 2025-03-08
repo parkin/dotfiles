@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   ...
 }:
 let
@@ -13,12 +15,17 @@ let
 in
 {
 
-  programs.eza = {
-    enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
+  options = {
+    myHomeManager.eza.enable = lib.mkEnableOption "Enables eza";
   };
+  config = lib.mkIf config.myHomeManager.eza.enable {
+    programs.eza = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
 
-  programs.bash.shellAliases = shellAliases;
-  programs.zsh.shellAliases = shellAliases;
+    programs.bash.shellAliases = shellAliases;
+    programs.zsh.shellAliases = shellAliases;
+  };
 }

@@ -5,11 +5,11 @@
 }:
 {
   options = {
-    starship.enable = lib.mkEnableOption "Enables starship" // {
+    myHomeManager.starship.enable = lib.mkEnableOption "Enables starship" // {
       default = true;
     };
   };
-  config = lib.mkIf config.starship.enable {
+  config = lib.mkIf config.myHomeManager.starship.enable {
 
     programs.starship = {
       enable = true;
