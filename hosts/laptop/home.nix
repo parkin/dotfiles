@@ -43,6 +43,8 @@ in
     anki-bin
     bitwarden-desktop
     megasync
+    # media player I use with anki
+    mpv
     ## obsidian md
     obsidian
 
