@@ -36,6 +36,7 @@ in
     bundles.terminal.enable = true;
     # paths for use in these modules (eg neovim and terminal)
     dotfilesPath = dotfilesPath;
+    japanese.enable = true;
   };
 
   # The home.packages option allows you to install Nix packages into your
