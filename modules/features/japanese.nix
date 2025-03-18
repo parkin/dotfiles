@@ -20,7 +20,9 @@
     };
 
     home.packages = with pkgs; [
+      # TODO: enable this extension with nix
       gnomeExtensions.kimpanel
+
       ipafont
       kochi-substitute
       noto-fonts-cjk-sans
