@@ -23,10 +23,16 @@
       # TODO: enable this extension with nix
       gnomeExtensions.kimpanel
 
-      ipafont
-      kochi-substitute
       noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
     ];
+
+    fonts.fontconfig.enable = true;
+
+    fonts.fontconfig.defaultFonts = {
+      sansSerif = [ "Noto Sans JP" ];
+      serif = [ "Noto Serif JP" ];
+    };
 
   };
 
