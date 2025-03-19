@@ -87,7 +87,19 @@
 
       ## Nerdfonts
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      noto-fonts
+      noto-fonts-color-emoji
     ];
+
+    # required to autoload fonts from packages installed via Home Manager
+    fonts.fontconfig.enable = true;
+
+    fonts.fontconfig.defaultFonts = {
+      emoji = [ "Noto Color Emoji" ];
+      monospace = [ "FiraCode" ];
+      sansSerif = [ "Noto Sans" ];
+      serif = [ "Noto Serif" ];
+    };
 
     ## My programs
 
