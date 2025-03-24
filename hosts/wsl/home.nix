@@ -37,8 +37,8 @@ in
     ../base.nix
     # my config modules
     ../../modules
-    # vscode extensions for wsl
-    ../../modules/features/vscode-wsl/vscode-wsl.nix
+    # vscode extensions for wsl (Removing for now)
+    # ../../modules/features/vscode-wsl/vscode-wsl.nix
   ];
 
   ## Options for my personal modules.
@@ -57,8 +57,7 @@ in
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file =
-    {
-    };
+  home.file = {
+  };
 
 }
