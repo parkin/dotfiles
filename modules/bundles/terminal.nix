@@ -71,6 +71,8 @@
     };
 
     home.packages = with pkgs; [
+      # dua disk usage analyzer
+      dua
 
       # fd, modern find
       fd
