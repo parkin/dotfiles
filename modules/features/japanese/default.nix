@@ -34,6 +34,15 @@
       serif = [ "Noto Serif JP" ];
     };
 
+    # this adds a config file.
+    # Not strictly needed, but I'm using to set Hiragana mode on start.
+    # See:
+    # https://github.com/google/mozc/blob/master/docs/configurations.md
+    # https://github.com/google/mozc/discussions/925
+    xdg.configFile."mozc/ibus_config.textproto" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.myHomeManager.dotfilesPath}/modules/features/japanese/ibus_config.textproto";
+    };
+
   };
 
 }

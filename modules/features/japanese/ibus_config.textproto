@@ -1,0 +1,12 @@
+# see:
+# https://github.com/google/mozc/blob/master/docs/configurations.md
+
+engines {
+  name : "mozc-jp"
+  longname : "Mozc"
+  layout : "default"
+  layout_variant : ""
+  layout_option : ""
+  rank : 25 # Changed from the default 80 so that en is preferred.
+}
+active_on_launch: True # True to set Hiragana input as default mode (Default is False for Direct mode)

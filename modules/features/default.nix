@@ -9,7 +9,7 @@
     ./bat.nix
     ./eza.nix
     ./fzf.nix
-    ./japanese.nix
+    ./japanese
     ./kitty.nix
     ./lf
     ./neovim
