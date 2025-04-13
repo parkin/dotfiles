@@ -52,6 +52,7 @@ in
     # Need to use unstable for now to use cryptomator 1.14.2.
     # Switch to nixpkgs-stable when cryptomator no longer broken.
     pkgs-unstable.cryptomator
+    pkgs-unstable.azahar # Nintendo 3ds emulator
   ];
 
   ######## Browser
