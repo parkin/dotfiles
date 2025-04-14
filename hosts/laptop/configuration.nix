@@ -144,7 +144,9 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    gamescopeSession.enable = true;
   };
+  programs.gamemode.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -159,6 +161,15 @@
     # note that shell extenstions still need to be manually enabled with the Extension application
     # see https://nixos.org/manual/nixos/stable/#sec-gnome-shell-extensions
     gnomeExtensions.workspace-matrix
+
+    ########################
+    # the following are for Steam and gaming compatibility
+    mangohud
+    protonup-qt
+    lutris
+    bottles
+    heroic
+    #/#####################/
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
