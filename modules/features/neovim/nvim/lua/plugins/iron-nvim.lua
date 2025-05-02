@@ -48,7 +48,7 @@ return {
         -- How the repl window will be displayed
         -- See below for more information
         -- repl_open_cmd = view.bottom(40),
-        repl_open_cmd = view.split.vertical.botright(50),
+        repl_open_cmd = view.split.vertical.botright(100),
       },
       -- Iron doesn't set keymaps by default anymore.
       -- You can set them here or manually add keymaps to the functions in iron.core
