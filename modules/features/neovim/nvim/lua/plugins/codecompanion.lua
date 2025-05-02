@@ -1,3 +1,8 @@
+-- don't load on my wsl
+if vim.fn.hostname() == "wsl-nixos" then
+  return {}
+end
+
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
