@@ -19,23 +19,25 @@ return {
             -- returns a table (see below)
             command = { "zsh" },
           },
-          python = {
-            command = { "python3" },
-            -- command = { "ipython", "--no-autoindent" }, -- { "python3" }
-            format = common.bracketed_paste_python,
-            block_dividers = { "# %%", "#%%" },
-          },
-          -- jupyter-console doesn't seem to paste indents correctly.....
           -- python = {
-          --   -- command = { "python3" }, -- or { "ipython", "--no-autoindent" }
-          --   command = {
-          --     "jupyter-console",
-          --     -- "--existing",
-          --     "--ZMQTerminalInteractiveShell.image_handler=None",
-          --   },
-          --   format = common.bracketed_paste_python,
+          --   -- command = { "python3" },
+          --   command = { "ipython", "--no-autoindent" }, -- { "python3" }
+          --   -- format = common.bracketed_paste_python, -- this doesn't work well for some reason
+          --   format = common.bracketed_paste,
           --   block_dividers = { "# %%", "#%%" },
           -- },
+          -- jupyter-console doesn't seem to paste indents correctly.....
+          python = {
+            -- command = { "python3" }, -- or { "ipython", "--no-autoindent" }
+            command = {
+              "jupyter-console",
+              -- "--existing",
+              "--ZMQTerminalInteractiveShell.image_handler=None",
+            },
+            -- format = common.bracketed_paste_python,
+            format = common.bracketed_paste,
+            block_dividers = { "# %%", "#%%" },
+          },
         },
         -- set the file type of the newly created repl to ft
         -- bufnr is the buffer id of the REPL and ft is the filetype of the
