@@ -1,3 +1,9 @@
+-- add an AI group to which-key
+local wk = require("which-key")
+wk.add({
+  { "<leader>i", group = "+Iron REPL" }, -- group
+})
+
 return {
   -- "hkupty/iron.nvim", -- This is the original
   "Vigemus/iron.nvim",
@@ -19,23 +25,23 @@ return {
             -- returns a table (see below)
             command = { "zsh" },
           },
-          -- python = {
-          --   -- command = { "python3" },
-          --   command = { "ipython", "--no-autoindent" }, -- { "python3" }
-          --   -- format = common.bracketed_paste_python, -- this doesn't work well for some reason
-          --   format = common.bracketed_paste,
-          --   block_dividers = { "# %%", "#%%" },
-          -- },
-          -- jupyter-console doesn't seem to paste indents correctly.....
           python = {
-            -- command = { "python3" }, -- or { "ipython", "--no-autoindent" }
-            command = {
-              "jupyter-console",
-              -- "--existing",
-              "--ZMQTerminalInteractiveShell.image_handler=None",
-            },
-            -- format = common.bracketed_paste_python,
-            format = common.bracketed_paste,
+            -- return the best console available in the path
+            command = function()
+              if vim.fn.executable("jupyter-console") == 1 then
+                return {
+                  "jupyter-console",
+                  -- "--existing",
+                  "--ZMQTerminalInteractiveShell.image_handler=None",
+                }
+              elseif vim.fn.executable("ipython") == 1 then
+                return { "ipython", "--no-autoindent" }
+              else
+                return { "python3" }
+              end
+            end,
+            -- format = common.bracketed_paste_python, -- <-- note this doesn't work well, it tries to run a code block one line at a time
+            format = common.bracketed_paste, -- <-- this works much better, runs the whole code block at once
             block_dividers = { "# %%", "#%%" },
           },
         },
@@ -48,9 +54,12 @@ return {
           -- return "iron"
         end,
         -- How the repl window will be displayed
-        -- See below for more information
-        -- repl_open_cmd = view.bottom(40),
-        repl_open_cmd = view.split.vertical.botright(100),
+        repl_open_cmd = view.split.vertical.botright(0.4, {
+          winfixwidth = false,
+          winfixheight = false,
+          -- any window-local configuration can be used here
+          number = true,
+        }),
       },
       -- Iron doesn't set keymaps by default anymore.
       -- You can set them here or manually add keymaps to the functions in iron.core
