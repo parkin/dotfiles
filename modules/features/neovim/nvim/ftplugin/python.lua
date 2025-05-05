@@ -5,7 +5,7 @@
 -- These keymaps jump to the next code cell, # %%
 vim.keymap.set(
   { "n", "v" },
-  "]b",
+  "]B",
   -- / - forward
   -- ^ - beginning of line
   -- [ \\t]* any number of spaces or tabs
@@ -16,7 +16,7 @@ vim.keymap.set(
 )
 vim.keymap.set(
   { "n", "v" },
-  "[b",
+  "[B",
   "?^[ \\t]*#\\s*%%<CR><Cmd>nohlsearch<CR>",
   { desc = "Move to next code block", noremap = true, silent = true, buffer = true }
 )
