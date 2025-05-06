@@ -34,7 +34,7 @@ in
 
   imports = [
     # base config
-    ../base.nix
+    ../base-hm.nix
     # my config modules
     ../../modules
     # vscode extensions for wsl (Removing for now)

@@ -24,7 +24,7 @@ in
 
   imports = [
     # base config to enable flakes and such
-    ../base.nix
+    ../base-hm.nix
     # my config modules
     ../../modules
   ];
