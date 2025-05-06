@@ -29,6 +29,8 @@ in
     # include NixOS-WSL modules
     # <nixos-wsl/modules> # removed, these are now included in my flake.nix
     ./certificates.nix
+    # include base
+    ../base-os.nix
   ];
 
   networking.hostName = "${hostName}";
@@ -54,10 +56,6 @@ in
     device = "C:\\users\\8J5204897\\box";
     fsType = "drvfs";
   };
-
-  # make zsh default shell
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
 
   # needed to use this to get pixi envs to work
   programs.nix-ld.enable = true;

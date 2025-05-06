@@ -9,6 +9,8 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    # include base config
+    ../base-os.nix
   ];
 
   # Bootloader. default systmd-boot
@@ -117,10 +119,6 @@
     ];
     packages = [ ];
   };
-
-  # set default shell to zsh
-  users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
