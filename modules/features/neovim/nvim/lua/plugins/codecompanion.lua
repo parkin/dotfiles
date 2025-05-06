@@ -1,8 +1,3 @@
--- don't load on my wsl
-if vim.fn.hostname() == "wsl-nixos" then
-  return {}
-end
-
 -- add an AI group to which-key
 local wk = require("which-key")
 wk.add({
