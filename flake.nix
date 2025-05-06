@@ -27,7 +27,7 @@
       inherit (self) outputs;
       username = "parkin";
       galacticboi-host = "galacticboi-nixos";
-      galacticboi-system = "x86_64-linux";
+      systemDefault = "x86_64-linux";
     in
     {
       ## Standalone home-manager config entrypoint.
@@ -37,14 +37,14 @@
         ## standard installation
         "${username}@${galacticboi-host}" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
-            system = "${galacticboi-system}";
+            system = "${systemDefault}";
             config.allowUnfree = true;
           };
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
             pkgs-unstable = import nixpkgs-unstable {
-              system = "${galacticboi-system}";
+              system = "${systemDefault}";
               config.allowUnfree = true;
             };
           };
@@ -54,9 +54,14 @@
         };
 
         "parkin@wsl-nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "${galacticboi-system}"; };
+          pkgs = import nixpkgs { system = "${systemDefault}"; };
           extraSpecialArgs = {
             inherit inputs outputs;
+            # pass unstable packages
+            pkgs-unstable = import nixpkgs-unstable {
+              system = "${systemDefault}";
+              config.allowUnfree = true;
+            };
           };
 
           modules = [ ./hosts/wsl/home.nix ];
