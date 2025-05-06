@@ -6,6 +6,7 @@ return {
     indent = { enable = true },
     ensure_installed = {
       "just",
+      "kdl",
       "lua",
       "markdown",
       "markdown_inline",

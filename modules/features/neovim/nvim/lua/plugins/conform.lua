@@ -12,6 +12,7 @@ return {
       formatters_by_ft = {
         javascript = { "prettierd" },
         typescript = { "prettierd" },
+        kdl = { "kdlfmt" },
         lua = { "stylua" },
         python = { "ruff_format" },
         markdown = { "prettierd" },

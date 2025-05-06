@@ -16,6 +16,7 @@
     ./starship
     ./tmux
     ./yazi
+    ./zellij
     ./zsh.nix
   ];
 

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   lib,
   ...
 }:
@@ -34,6 +35,7 @@
       solargraph
       sqls
       ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
+      pkgs-unstable.kdlfmt
       nixfmt-rfc-style
       ruff
       prettierd
