@@ -12,6 +12,7 @@ return {
       formatters_by_ft = {
         javascript = { "prettierd" },
         typescript = { "prettierd" },
+        json = { "jq" },
         kdl = { "kdlfmt" },
         lua = { "stylua" },
         python = { "ruff_format" },
