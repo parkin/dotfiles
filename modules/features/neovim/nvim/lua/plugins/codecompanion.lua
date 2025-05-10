@@ -4,6 +4,11 @@ wk.add({
   { "<leader>a", group = "+AI" }, -- group
 })
 
+local adapter_default = "anthropic2"
+if vim.fn.hostname() == "wsl-nixos" then
+  adapter_default = "wca"
+end
+
 -- my usual config
 return {
   "olimorris/codecompanion.nvim",
@@ -14,15 +19,14 @@ return {
   opts = {
     strategies = {
       chat = {
-        -- adapter = "anthropic2",
-        adapter = "wca",
+        adapter = adapter_default,
       },
-      -- inline = {
-      --   adapter = "anthropic2",
-      -- },
-      -- cmd = {
-      --   adapter = "anthropic2",
-      -- },
+      inline = {
+        adapter = adapter_default,
+      },
+      cmd = {
+        adapter = adapter_default,
+      },
     },
     opts = {
       log_level = "DEBUG", -- For development
@@ -46,10 +50,6 @@ return {
 
         ---@alias WCABearerToken {access_token: string, expiration: number}|nil
         local _iam_token
-
-        -- Note for this to work, I had to edit the requests in the "codecompanion.http library" to use form instead of body
-        -- -- body = body_file.filename or "",
-        -- form = { message = vim.base64.encode(body) },
 
         ---@return WCABearerToken
         local function authorize_token()
@@ -152,8 +152,18 @@ return {
 
               return { messages = messages }
             end,
-            set_body = function(self, payload)
-              local output = { message_payload = openai.handlers.form_messages(self, payload.messages) }
+            modify_request_opts = function(self, payload, request_opts)
+              -- for now this method requires you implement it manually in the codecompanion.adapters.init.lua and codecompanion.http
+              request_opts.body = nil
+              return request_opts
+            end,
+            set_form = function(self, payload)
+              -- for now this method requires you implement it manually in the codecompanion.adapters.init.lua and codecompanion.http
+              local output = {
+                message = vim.base64.encode(
+                  vim.json.encode({ message_payload = openai.handlers.form_messages(self, payload.messages) })
+                ),
+              }
               return output
             end,
             ---Output the data from the API ready for insertion into the chat buffer
