@@ -13,6 +13,10 @@
     ../base-os.nix
   ];
 
+  # switch to the latest kernel (to pick up audio fix for laptop?)
+  # TODO: remove this line after upgrading to 25.05 (since it has 6.12 which should fix the audio issue)
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Bootloader. default systmd-boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
