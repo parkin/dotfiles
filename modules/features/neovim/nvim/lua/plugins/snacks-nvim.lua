@@ -16,12 +16,13 @@ local logo = [[
 ]]
 
 return {
-  "folke/snacks.nvim",
+  "snacks.nvim",
   opts = {
     dashboard = {
       preset = {
         header = logo,
       },
     },
+    scroll = { enabled = false },
   },
 }
