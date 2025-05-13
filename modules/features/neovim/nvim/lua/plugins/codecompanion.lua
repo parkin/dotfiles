@@ -11,7 +11,9 @@ end
 
 -- my usual config
 return {
-  "olimorris/codecompanion.nvim",
+  -- "olimorris/codecompanion.nvim",
+  "parkin/codecompanion.nvim",
+  branch = "request_override",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
