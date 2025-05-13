@@ -1,3 +1,8 @@
+-- Disable for now
+if true then
+  return {}
+end
+
 ---@type LazySpec
 return {
   "mikavilpas/yazi.nvim",
