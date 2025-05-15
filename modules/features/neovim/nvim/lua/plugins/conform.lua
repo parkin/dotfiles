@@ -20,6 +20,7 @@ return {
         nix = { "nixfmt" },
         rust = { "rustfmt" },
         sql = { "sql_formatter" },
+        tex = { "tex-fmt" },
         toml = { "taplo" },
       },
     },

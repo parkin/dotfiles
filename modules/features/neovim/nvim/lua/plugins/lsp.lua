@@ -64,6 +64,8 @@ return {
         sqls = {},
         -- toml
         taplo = {},
+        -- latex
+        texlab = {},
         -- typescript-language-server
         ts_ls = {},
       },

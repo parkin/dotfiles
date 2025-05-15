@@ -30,6 +30,7 @@
       typescript-language-server
       nixd # nix
       basedpyright
+      texlab
       vscode-langservers-extracted # html/css/json/eslint language servers
       # rust-analyzer # disabling to use flake instead
       solargraph
@@ -46,6 +47,7 @@
       stylua
       sql-formatter
       taplo
+      tex-fmt
       ############### /lazyvim setup
     ];
 
