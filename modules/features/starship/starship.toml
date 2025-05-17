@@ -147,7 +147,7 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_purple)]($style)'
 [python]
 symbol = ""
 style = "bg:color_purple"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_purple)]($style)'
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:color_fg0 bg:color_purple)]($style)'
 
 [shell]
 disabled = false
