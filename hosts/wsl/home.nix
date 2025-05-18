@@ -1,5 +1,4 @@
-args@{
-  config,
+{
   pkgs,
   ...
 }:
@@ -26,6 +25,33 @@ in
 
   programs.bash.sessionVariables = sessionVariables;
   programs.zsh.sessionVariables = sessionVariables;
+  # add extra line to auto-launch ssh-agent and use ssh-add for WSL
+  # see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows
+  programs.zsh.initExtra = ''
+    # start ssh-agent for WSL,
+    # see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows
+    env=~/.ssh/agent.env
+
+    agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+
+    agent_start () {
+        (umask 077; ssh-agent >| "$env")
+        . "$env" >| /dev/null ; }
+
+    agent_load_env
+
+    # agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+    agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+
+    if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+        agent_start
+        ssh-add
+    elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+        ssh-add
+    fi
+
+    unset env
+  '';
 
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
@@ -54,10 +80,5 @@ in
   home.packages = with pkgs; [
     wsl-open
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-  };
 
 }
