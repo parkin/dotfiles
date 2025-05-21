@@ -12,6 +12,8 @@ let
     # see https://plotly.com/python/renderers/
     BROWSER = ''/mnt/c/Program Files/Mozilla Firefox/firefox.exe'';
     PLOTLY_RENDERER = "browser";
+    # set WebAgg as default backend for matplotlib
+    MPLBACKEND = "webagg";
   };
 in
 {
