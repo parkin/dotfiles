@@ -10,6 +10,7 @@ return {
     lazy = true,
     opts = {
       formatters_by_ft = {
+        bash = { "shfmt" },
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         json = { "jq" },

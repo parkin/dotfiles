@@ -24,7 +24,8 @@
       nodejs_latest
       python3
       # cargo
-      ## for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
+      ###### for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
+      bash-language-server
       lua-language-server
       marksman
       typescript-language-server
@@ -35,7 +36,7 @@
       # rust-analyzer # disabling to use flake instead
       solargraph
       sqls
-      ## Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
+      ###### Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       pkgs-unstable.kdlfmt
       jq # json
       nixfmt-rfc-style
@@ -44,6 +45,7 @@
       markdownlint-cli2
       vimPlugins.vim-markdown-toc
       rustfmt
+      shfmt # bash
       stylua
       sql-formatter
       taplo
