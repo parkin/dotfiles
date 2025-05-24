@@ -54,7 +54,7 @@
             ./hosts/laptop/home.nix
             # pass the hostname and username as module options
             {
-              config.mynixos.hostname = galacticboi-host;
+              config.mynixos.hostName = galacticboi-host;
               config.mynixos.username = username;
             }
           ];
@@ -76,7 +76,7 @@
           modules = [
             ./hosts/wsl/home.nix
             {
-              config.mynixos.hostname = wsl-host;
+              config.mynixos.hostName = wsl-host;
               config.mynixos.username = username;
             }
           ];
@@ -96,7 +96,7 @@
           modules = [
             ./hosts/laptop/configuration.nix
             {
-              config.mynixos.hostname = galacticboi-host;
+              config.mynixos.hostName = galacticboi-host;
               config.mynixos.username = username;
             }
           ];
@@ -112,7 +112,7 @@
             nixos-wsl.nixosModules.default
             ./hosts/wsl/configuration.nix
             {
-              config.mynixos.hostname = wsl-host;
+              config.mynixos.hostName = wsl-host;
               config.mynixos.username = username;
             }
           ];
