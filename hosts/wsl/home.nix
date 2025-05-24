@@ -72,8 +72,6 @@ in
   ## These options are defined in the modules imported above.
   myHomeManager = {
     bundles.terminal.enable = true;
-    # paths for use in these modules (eg neovim and terminal)
-    dotfilesPath = config.mynixos.dotfilesPath;
   };
 
   # The home.packages option allows you to install Nix packages into your
