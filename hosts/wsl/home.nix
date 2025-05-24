@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 let
@@ -26,7 +27,7 @@ in
   programs.zsh.sessionVariables = sessionVariables;
   # add extra line to auto-launch ssh-agent and use ssh-add for WSL
   # see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     function ssh_start_agent() {
       # start ssh-agent for WSL,
       # see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows
