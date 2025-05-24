@@ -29,8 +29,6 @@
   myHomeManager = {
     anki.enable = true;
     bundles.terminal.enable = true;
-    # paths for use in these modules (eg neovim and terminal)
-    dotfilesPath = config.mynixos.dotfilesPath;
     japanese.enable = true;
   };
 
