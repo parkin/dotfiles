@@ -16,11 +16,6 @@ let
   hostName = "wsl-nixos";
 in
 {
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
   # optimize storage periodically
   # see https://nixos.wiki/wiki/Storage_optimization
   nix.optimise.automatic = true;
@@ -37,7 +32,7 @@ in
 
   wsl = {
     enable = true;
-    defaultUser = "${config.mynixos.username}";
+    defaultUser = config.mynixos.username;
     startMenuLaunchers = true;
     # skip path inclusion
     # not sure why we have to choose both

@@ -7,7 +7,7 @@
 
   config = {
     nix.package = pkgs.nix;
-    # Note: I set nix.settings.experimental-features in ./base.nix
+    # note that nix.settings.experimental-features is set in ./base.nix
 
     nixpkgs.config = {
       allowUnfree = true;
