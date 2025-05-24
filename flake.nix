@@ -29,11 +29,12 @@
       galacticboi-host = "galacticboi-nixos";
       wsl-host = "wsl-nixos";
       systemDefault = "x86_64-linux";
+      # wrapped homeManagerConfiguration in a function for code reuse
       mkHomeConfig =
         { hostname, username, ... }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
-            system = "${systemDefault}";
+            system = systemDefault;
             config.allowUnfree = true;
           };
           extraSpecialArgs = {
@@ -52,6 +53,26 @@
               config.mynixos.username = username;
             }
           ];
+        };
+      # wrapped nixosSystem in a function for code reuse
+      mkNixOSConfig =
+        {
+          hostname,
+          username,
+          modules ? [ ],
+        }:
+        nixpkgs.lib.nixosSystem {
+          system = systemDefault;
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/${hostname}/configuration.nix
+            {
+              config.mynixos.hostName = hostname;
+              config.mynixos.username = username;
+            }
+          ] ++ modules;
         };
     in
     {
@@ -77,32 +98,17 @@
       # (Also available without `nh` through `nixos-rebuild --flake .#your-hostname`)
       nixosConfigurations = {
         ## Home laptop
-        "${galacticboi-host}" = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            ./hosts/laptop/configuration.nix
-            {
-              config.mynixos.hostName = galacticboi-host;
-              config.mynixos.username = defaultUsername;
-            }
-          ];
+        "${galacticboi-host}" = mkNixOSConfig {
+          hostname = galacticboi-host;
+          username = defaultUsername;
         };
 
         ## WSL
-        "${wsl-host}" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
+        "${wsl-host}" = mkNixOSConfig {
+          hostname = wsl-host;
+          username = defaultUsername;
           modules = [
             nixos-wsl.nixosModules.default
-            ./hosts/wsl/configuration.nix
-            {
-              config.mynixos.hostName = wsl-host;
-              config.mynixos.username = defaultUsername;
-            }
           ];
         };
 
