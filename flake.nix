@@ -29,9 +29,16 @@
       galacticboi-host = "galacticboi-nixos";
       wsl-host = "wsl-nixos";
       systemDefault = "x86_64-linux";
+      # simple function for setting config.mynixos options
+      mkMyNixosOpts =
+        { hostname, username, ... }:
+        {
+          config.mynixos.hostName = hostname;
+          config.mynixos.username = username;
+        };
       # wrapped homeManagerConfiguration in a function for code reuse
       mkHomeConfig =
-        { hostname, username }:
+        args@{ hostname, ... }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = systemDefault;
@@ -47,19 +54,15 @@
           };
           modules = [
             ./hosts/${hostname}/home.nix
-            # pass the hostname and username as module options
-            {
-              config.mynixos.hostName = hostname;
-              config.mynixos.username = username;
-            }
+            (mkMyNixosOpts args) # pass the hostname and username as module options
           ];
         };
       # wrapped nixosSystem in a function for code reuse
       mkNixOSConfig =
-        {
+        args@{
           hostname,
-          username,
           modules ? [ ],
+          ...
         }:
         nixpkgs.lib.nixosSystem {
           system = systemDefault;
@@ -68,10 +71,7 @@
           };
           modules = [
             ./hosts/${hostname}/configuration.nix
-            {
-              config.mynixos.hostName = hostname;
-              config.mynixos.username = username;
-            }
+            (mkMyNixosOpts args) # pass the hostname and username as module options
           ] ++ modules;
         };
     in
