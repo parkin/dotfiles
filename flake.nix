@@ -25,18 +25,13 @@
     }@inputs:
     let
       inherit (self) outputs;
-      username = "parkin";
+      defaultUsername = "parkin";
       galacticboi-host = "galacticboi-nixos";
       wsl-host = "wsl-nixos";
       systemDefault = "x86_64-linux";
-    in
-    {
-      ## Standalone home-manager config entrypoint.
-      # Available through `nh home switch`
-      # (Also available through `home-manager --flake .#your-username@your-hostname`)
-      homeConfigurations = {
-        ## standard installation
-        "${username}@${galacticboi-host}" = home-manager.lib.homeManagerConfiguration {
+      mkHomeConfig =
+        { hostname, username, ... }:
+        home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = "${systemDefault}";
             config.allowUnfree = true;
@@ -49,38 +44,31 @@
               config.allowUnfree = true;
             };
           };
-
           modules = [
-            ./hosts/laptop/home.nix
+            "./hosts/${hostname}/home.nix"
             # pass the hostname and username as module options
             {
               config.mynixos.hostName = galacticboi-host;
               config.mynixos.username = username;
             }
           ];
-
+        };
+    in
+    {
+      ## Standalone home-manager config entrypoint.
+      # Available through `nh home switch`
+      # (Also available through `home-manager --flake .#your-username@your-hostname`)
+      homeConfigurations = {
+        ## standard installation
+        "${defaultUsername}@${galacticboi-host}" = mkHomeConfig {
+          hostname = galacticboi-host;
+          username = defaultUsername;
         };
 
         ## WSL
-        "${username}@${wsl-host}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "${systemDefault}"; };
-          extraSpecialArgs = {
-            inherit inputs outputs;
-            # pass unstable packages
-            pkgs-unstable = import nixpkgs-unstable {
-              system = "${systemDefault}";
-              config.allowUnfree = true;
-            };
-          };
-
-          modules = [
-            ./hosts/wsl/home.nix
-            {
-              config.mynixos.hostName = wsl-host;
-              config.mynixos.username = username;
-            }
-          ];
-
+        "${defaultUsername}@${wsl-host}" = mkHomeConfig {
+          hostname = wsl-host;
+          username = defaultUsername;
         };
       };
 
@@ -97,7 +85,7 @@
             ./hosts/laptop/configuration.nix
             {
               config.mynixos.hostName = galacticboi-host;
-              config.mynixos.username = username;
+              config.mynixos.username = defaultUsername;
             }
           ];
         };
@@ -113,7 +101,7 @@
             ./hosts/wsl/configuration.nix
             {
               config.mynixos.hostName = wsl-host;
-              config.mynixos.username = username;
+              config.mynixos.username = defaultUsername;
             }
           ];
         };
