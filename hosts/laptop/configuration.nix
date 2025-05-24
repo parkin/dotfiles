@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -110,7 +111,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.parkin = {
+  users.users.${config.mynixos.username} = {
     isNormalUser = true;
     description = "Will Parkin";
     extraGroups = [
@@ -128,13 +129,6 @@
     libraries = with pkgs; [
       libxcrypt
     ];
-  };
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/parkin/.dotfiles";
   };
 
   programs.steam = {

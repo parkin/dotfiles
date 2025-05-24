@@ -7,12 +7,12 @@
 
 {
   pkgs,
+  config,
   ...
 }:
 let
   # see this documentation before changing the username on WSL
   # https://nix-community.github.io/NixOS-WSL/how-to/change-username.html
-  user = "parkin";
   hostName = "wsl-nixos";
 in
 {
@@ -37,7 +37,7 @@ in
 
   wsl = {
     enable = true;
-    defaultUser = "${user}";
+    defaultUser = "${config.mynixos.username}";
     startMenuLaunchers = true;
     # skip path inclusion
     # not sure why we have to choose both
@@ -79,12 +79,5 @@ in
     # kitty system wide so we can start it
     kitty
   ];
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/${user}/.dotfiles";
-  };
 
 }

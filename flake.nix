@@ -53,7 +53,8 @@
 
         };
 
-        "parkin@wsl-nixos" = home-manager.lib.homeManagerConfiguration {
+        ## WSL
+        "${username}@wsl-nixos" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "${systemDefault}"; };
           extraSpecialArgs = {
             inherit inputs outputs;
@@ -73,6 +74,7 @@
       # Available through `nh os switch`
       # (Also available without `nh` through `nixos-rebuild --flake .#your-hostname`)
       nixosConfigurations = {
+        ## Home laptop
         "${galacticboi-host}" = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
@@ -80,6 +82,7 @@
           modules = [ ./hosts/laptop/configuration.nix ];
         };
 
+        ## WSL
         wsl-nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
