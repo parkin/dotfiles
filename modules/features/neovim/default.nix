@@ -33,7 +33,7 @@
       basedpyright
       texlab
       vscode-langservers-extracted # html/css/json/eslint language servers
-      # rust-analyzer # disabling to use flake instead
+      rust-analyzer
       solargraph
       sqls
       ###### Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
