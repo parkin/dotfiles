@@ -42,14 +42,12 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = systemDefault;
-            config.allowUnfree = true;
           };
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
             pkgs-unstable = import nixpkgs-unstable {
               system = "${systemDefault}";
-              config.allowUnfree = true;
             };
           };
           modules = [
