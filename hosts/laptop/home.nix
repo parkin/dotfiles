@@ -1,19 +1,14 @@
 {
   pkgs,
   pkgs-unstable,
+  config,
   ...
 }:
-let
-  username = "parkin";
-  homeDirectory = "/home/parkin";
-  dotfilesDir = ".dotfiles";
-  dotfilesPath = "${homeDirectory}/${dotfilesDir}";
-in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "${username}";
-  home.homeDirectory = "${homeDirectory}";
+  home.username = "${config.mynixos.username}";
+  home.homeDirectory = "/home/${config.home.username}";
   programs.git.userName = "Will Parkin";
   programs.git.userEmail = "wmparkin@gmail.com";
 
@@ -35,7 +30,7 @@ in
     anki.enable = true;
     bundles.terminal.enable = true;
     # paths for use in these modules (eg neovim and terminal)
-    dotfilesPath = dotfilesPath;
+    dotfilesPath = config.mynixos.dotfilesPath;
     japanese.enable = true;
   };
 
@@ -80,10 +75,5 @@ in
   };
 
   ######## /Browser
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-  };
 
 }

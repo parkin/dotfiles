@@ -1,12 +1,9 @@
 {
   pkgs,
+  config,
   ...
 }:
 let
-  username = "parkin";
-  homeDirectory = "/home/parkin";
-  dotfilesDir = ".dotfiles";
-  dotfilesPath = "${homeDirectory}/${dotfilesDir}";
   sessionVariables = {
     # Set extra variables for Plotly to render in the Windows browser.
     # see https://plotly.com/python/renderers/
@@ -19,8 +16,8 @@ in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "${username}";
-  home.homeDirectory = "${homeDirectory}";
+  home.username = config.mynixos.username;
+  home.homeDirectory = "/home/${config.mynixos.username}";
 
   programs.git.userName = "Will Parkin";
   programs.git.userEmail = "parkin@ibm.com";
@@ -76,7 +73,7 @@ in
   myHomeManager = {
     bundles.terminal.enable = true;
     # paths for use in these modules (eg neovim and terminal)
-    dotfilesPath = dotfilesPath;
+    dotfilesPath = config.mynixos.dotfilesPath;
   };
 
   # The home.packages option allows you to install Nix packages into your

@@ -17,7 +17,7 @@
       enableZshIntegration = true;
     };
     xdg.configFile."starship.toml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.myHomeManager.dotfilesPath}/modules/features/starship/starship.toml";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.mynixos.dotfilesPath}/modules/features/starship/starship.toml";
     };
   };
 }

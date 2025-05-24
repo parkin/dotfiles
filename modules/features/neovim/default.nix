@@ -68,7 +68,7 @@
     ## copy the config files
     xdg.configFile = {
       "nvim" = {
-        source = config.lib.file.mkOutOfStoreSymlink "${config.myHomeManager.dotfilesPath}/modules/features/neovim/nvim";
+        source = config.lib.file.mkOutOfStoreSymlink "${config.mynixos.dotfilesPath}/modules/features/neovim/nvim";
         recursive = true;
       };
     };

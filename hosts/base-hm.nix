@@ -3,16 +3,11 @@
   ...
 }:
 {
+  imports = [ ./base.nix ];
+
   config = {
-    nix = {
-      package = pkgs.nix;
-      settings = {
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
-      };
-    };
+    nix.package = pkgs.nix;
+    # Note: I set nix.settings.experimental-features in ./base.nix
 
     nixpkgs.config = {
       allowUnfree = true;

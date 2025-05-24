@@ -48,7 +48,7 @@
         "...." = "cd ../../..";
         "....." = "cd ../../../..";
         "~" = "cd ~";
-        cddot = "cd ${config.myHomeManager.dotfilesPath}";
+        cddot = "cd ${config.mynixos.dotfilesPath}";
         # Reload the shell (i.e. invoke as a login shell)
         reload = "exec $SHELL -l";
         # Print each PATH entry on a separate line

@@ -41,7 +41,7 @@
     # https://github.com/google/mozc/blob/master/docs/configurations.md
     # https://github.com/google/mozc/discussions/925
     xdg.configFile."mozc/ibus_config.textproto" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.myHomeManager.dotfilesPath}/modules/features/japanese/ibus_config.textproto";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.mynixos.dotfilesPath}/modules/features/japanese/ibus_config.textproto";
     };
 
   };

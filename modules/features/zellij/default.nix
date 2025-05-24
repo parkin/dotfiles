@@ -15,7 +15,7 @@
 
     ];
     xdg.configFile."zellij/config.kdl" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.myHomeManager.dotfilesPath}/modules/features/zellij/config.kdl";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.mynixos.dotfilesPath}/modules/features/zellij/config.kdl";
     };
     # the older version wasn't working well for me yet on nix
     # programs.zellij = {
