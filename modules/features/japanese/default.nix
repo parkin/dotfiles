@@ -11,7 +11,8 @@
   config = lib.mkIf config.myHomeManager.japanese.enable {
 
     i18n.inputMethod = {
-      enabled = "fcitx5";
+      enable = true;
+      type = "fcitx5";
       fcitx5.addons = with pkgs; [
         fcitx5-gtk # alternatively, kdePackages.fcitx5-qt
         fcitx5-mozc # table input method support
