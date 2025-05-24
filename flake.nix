@@ -31,7 +31,7 @@
       systemDefault = "x86_64-linux";
       # wrapped homeManagerConfiguration in a function for code reuse
       mkHomeConfig =
-        { hostname, username, ... }:
+        { hostname, username }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = systemDefault;
