@@ -45,10 +45,10 @@
             };
           };
           modules = [
-            "./hosts/${hostname}/home.nix"
+            ./hosts/${hostname}/home.nix
             # pass the hostname and username as module options
             {
-              config.mynixos.hostName = galacticboi-host;
+              config.mynixos.hostName = hostname;
               config.mynixos.username = username;
             }
           ];
