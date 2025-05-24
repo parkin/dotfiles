@@ -13,7 +13,7 @@
       shellIntegration.enableBashIntegration = true;
       shellIntegration.enableZshIntegration = true;
       font = {
-        name = "FiraCode Nerd Font";
+        name = "FiraCode";
       };
       settings = {
         background_opacity = "0.85";

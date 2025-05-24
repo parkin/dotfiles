@@ -89,7 +89,8 @@
       wget
 
       ## Nerdfonts
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nerd-fonts.fira-code
+      # other fonts
       noto-fonts
       noto-fonts-color-emoji
     ];
