@@ -3,9 +3,6 @@
   config,
   ...
 }:
-let
-  username = "parkin";
-in
 {
   options = {
     ## global options for my config
@@ -13,7 +10,6 @@ in
 
       username = lib.mkOption {
         description = "Default username";
-        default = username;
         type = lib.types.str;
       };
 
@@ -21,6 +17,11 @@ in
         description = "Full absolute path to dotfiles directory. Eg /home/parkin/.dotfiles";
         default = "/home/${config.mynixos.username}/.dotfiles";
         type = lib.types.path;
+      };
+
+      hostName = lib.mkOption {
+        description = "hostName to be passed to network.hostName";
+        type = lib.types.str;
       };
     };
   };

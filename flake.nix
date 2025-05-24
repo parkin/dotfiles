@@ -27,6 +27,7 @@
       inherit (self) outputs;
       username = "parkin";
       galacticboi-host = "galacticboi-nixos";
+      wsl-host = "wsl-nixos";
       systemDefault = "x86_64-linux";
     in
     {
@@ -49,12 +50,19 @@
             };
           };
 
-          modules = [ ./hosts/laptop/home.nix ];
+          modules = [
+            ./hosts/laptop/home.nix
+            # pass the hostname and username as module options
+            {
+              config.mynixos.hostname = galacticboi-host;
+              config.mynixos.username = username;
+            }
+          ];
 
         };
 
         ## WSL
-        "${username}@wsl-nixos" = home-manager.lib.homeManagerConfiguration {
+        "${username}@${wsl-host}" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs { system = "${systemDefault}"; };
           extraSpecialArgs = {
             inherit inputs outputs;
@@ -65,7 +73,13 @@
             };
           };
 
-          modules = [ ./hosts/wsl/home.nix ];
+          modules = [
+            ./hosts/wsl/home.nix
+            {
+              config.mynixos.hostname = wsl-host;
+              config.mynixos.username = username;
+            }
+          ];
 
         };
       };
@@ -79,11 +93,17 @@
           specialArgs = {
             inherit inputs outputs;
           };
-          modules = [ ./hosts/laptop/configuration.nix ];
+          modules = [
+            ./hosts/laptop/configuration.nix
+            {
+              config.mynixos.hostname = galacticboi-host;
+              config.mynixos.username = username;
+            }
+          ];
         };
 
         ## WSL
-        wsl-nixos = nixpkgs.lib.nixosSystem {
+        "${wsl-host}" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs outputs;
@@ -91,6 +111,10 @@
           modules = [
             nixos-wsl.nixosModules.default
             ./hosts/wsl/configuration.nix
+            {
+              config.mynixos.hostname = wsl-host;
+              config.mynixos.username = username;
+            }
           ];
         };
 

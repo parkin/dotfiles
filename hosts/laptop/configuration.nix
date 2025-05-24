@@ -25,7 +25,7 @@
   ## https://discourse.nixos.org/t/brightness-not-changing/34231
   boot.kernelParams = [ "i915.enable_dpcd_backlight=3" ];
 
-  networking.hostName = "galacticboi-nixos"; # Define your hostname.
+  networking.hostName = config.mynixos.hostName; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

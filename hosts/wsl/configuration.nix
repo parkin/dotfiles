@@ -10,28 +10,23 @@
   config,
   ...
 }:
-let
-  # see this documentation before changing the username on WSL
-  # https://nix-community.github.io/NixOS-WSL/how-to/change-username.html
-  hostName = "wsl-nixos";
-in
 {
   # optimize storage periodically
   # see https://nixos.wiki/wiki/Storage_optimization
   nix.optimise.automatic = true;
 
   imports = [
-    # include NixOS-WSL modules
-    # <nixos-wsl/modules> # removed, these are now included in my flake.nix
     ./certificates.nix
     # include base
     ../base-os.nix
   ];
 
-  networking.hostName = "${hostName}";
+  networking.hostName = config.mynixos.hostName;
 
   wsl = {
     enable = true;
+    # see this documentation before changing the username on WSL
+    # https://nix-community.github.io/NixOS-WSL/how-to/change-username.html
     defaultUser = config.mynixos.username;
     startMenuLaunchers = true;
     # skip path inclusion
