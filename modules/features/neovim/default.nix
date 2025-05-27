@@ -27,6 +27,7 @@
       ###### for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
       bash-language-server
       lua-language-server
+      gopls
       marksman
       typescript-language-server
       nixd # nix

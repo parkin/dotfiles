@@ -28,6 +28,7 @@ return {
           },
         },
         bashls = {},
+        gopls = {},
         jsonls = {},
         lua_ls = {},
         -- marksman = {},
