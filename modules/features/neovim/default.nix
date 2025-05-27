@@ -41,6 +41,7 @@
       pkgs-unstable.kdlfmt
       jq # json
       nixfmt-rfc-style
+      gofumpt
       ruff
       prettierd
       markdownlint-cli2

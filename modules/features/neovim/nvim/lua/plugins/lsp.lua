@@ -28,7 +28,7 @@ return {
           },
         },
         bashls = {},
-        gopls = {},
+        gopls = { gofumpt = true },
         jsonls = {},
         lua_ls = {},
         -- marksman = {},
