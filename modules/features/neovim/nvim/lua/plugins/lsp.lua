@@ -8,7 +8,11 @@ local dotfiles = "/home/parkin/.dotfiles"
 
 return {
   {
+    "microsoft/python-type-stubs",
+  },
+  {
     "neovim/nvim-lspconfig",
+    dependencies = { "microsoft/python-type-stubs" },
     opts = {
       servers = {
         -- rust
@@ -23,6 +27,8 @@ return {
                 -- pandas-stubs only supports pyright basic typeCheckingMode
                 -- https://github.com/pandas-dev/pandas-stubs/issues/963#issuecomment-2248294958
                 typeCheckingMode = "basic",
+                useLibraryCodeForTypes = false,
+                stubPath = vim.fn.stdpath("data") .. "/lazy/python-type-stubs/stubs",
               },
             },
           },
