@@ -29,6 +29,7 @@
   myHomeManager = {
     anki.enable = true;
     bundles.terminal.enable = true;
+    kitty.enable = true;
     japanese.enable = true;
   };
 
