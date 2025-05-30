@@ -66,8 +66,6 @@
     neovim
     # WSL utilities
     wslu
-    # kitty system wide so we can start it
-    kitty
   ];
 
 }
