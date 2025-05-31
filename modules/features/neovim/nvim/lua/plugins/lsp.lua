@@ -7,12 +7,12 @@
 local dotfiles = "/home/parkin/.dotfiles"
 
 return {
-  {
-    "microsoft/python-type-stubs",
-  },
+  -- {
+  --   "microsoft/python-type-stubs",
+  -- },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "microsoft/python-type-stubs" },
+    -- dependencies = { "microsoft/python-type-stubs" },
     opts = {
       servers = {
         -- rust
@@ -26,9 +26,15 @@ return {
               analysis = {
                 -- pandas-stubs only supports pyright basic typeCheckingMode
                 -- https://github.com/pandas-dev/pandas-stubs/issues/963#issuecomment-2248294958
-                typeCheckingMode = "basic",
+                -- typeCheckingMode = "basic",
+                -- autoSearchPaths = true,
+                -- autoImportCompletions = true,
+                -- turn off the library code analysis, was making things slow
+                -- you can generate stubs with `basedpyright --createstub <import>`
                 useLibraryCodeForTypes = false,
-                stubPath = vim.fn.stdpath("data") .. "/lazy/python-type-stubs/stubs",
+                diagnosticMode = "workspace",
+                -- logLevel = "Trace",
+                -- stubPath = vim.fn.stdpath("data") .. "/lazy/python-type-stubs/stubs",
               },
             },
           },
