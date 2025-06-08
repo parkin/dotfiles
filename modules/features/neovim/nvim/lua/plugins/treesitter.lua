@@ -5,6 +5,7 @@ return {
     highlight = { enable = true },
     indent = { enable = true },
     ensure_installed = {
+      "go",
       "just",
       "kdl",
       "lua",
