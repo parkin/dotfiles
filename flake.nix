@@ -6,7 +6,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +19,7 @@
     {
       self,
       nixpkgs,
+      nixos-unstable,
       nixpkgs-unstable,
       home-manager,
       nixos-wsl,
@@ -46,7 +48,10 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
-            pkgs-unstable = import nixpkgs-unstable {
+            nixos-unstable = import nixos-unstable {
+              system = "${systemDefault}";
+            };
+            nixpkgs-unstable = import nixpkgs-unstable {
               system = "${systemDefault}";
             };
           };

@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
+  nixos-unstable,
   lib,
   ...
 }:
@@ -38,7 +38,7 @@
       solargraph
       sqls
       ###### Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
-      pkgs-unstable.kdlfmt
+      nixos-unstable.kdlfmt
       jq # json
       nixfmt-rfc-style
       gofumpt

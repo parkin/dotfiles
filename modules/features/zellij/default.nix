@@ -1,5 +1,5 @@
 {
-  pkgs-unstable,
+  nixos-unstable,
   lib,
   config,
   ...
@@ -11,7 +11,7 @@
 
   config = lib.mkIf config.myHomeManager.zellij.enable {
     home.packages = [
-      pkgs-unstable.zellij
+      nixos-unstable.zellij
 
     ];
     xdg.configFile."zellij/config.kdl" = {
