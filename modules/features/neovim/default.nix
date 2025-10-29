@@ -18,11 +18,14 @@
       gcc
       ripgrep
       fd
-      luarocks
       unzip
       lazygit
       nodejs_latest
       python3
+      tree-sitter
+      # freezing at lua5.1, although I'm not sure why
+      lua5_1
+      lua51Packages.luarocks
       # cargo
       ###### for neovim, LSP's, see my setup in (~/.config/nvim/lua/plugins/lsp.lua)
       bash-language-server
