@@ -39,15 +39,12 @@
   home.packages = with pkgs; [
     audacity
     bitwarden-desktop
+    cryptomator
     megasync
     ## obsidian md
     obsidian
 
     ## unstable packages
-    # TODO: nixpkgs 24.11, cryptomator 1.14.1 marked broken.
-    # Need to use unstable for now to use cryptomator 1.14.2.
-    # Switch to nixpkgs-stable when cryptomator no longer broken.
-    nixos-unstable.cryptomator
     # TODO: switch back to nixos-unstable after the QT 6.10 patch is merged into nixos-unstable
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/az/azahar/package.nix
     # nixos-unstable.azahar # Nintendo 3ds emulator
