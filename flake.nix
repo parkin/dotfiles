@@ -7,7 +7,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +19,6 @@
       self,
       nixpkgs,
       nixos-unstable,
-      nixpkgs-unstable,
       home-manager,
       nixos-wsl,
       ...
@@ -51,9 +49,6 @@
             nixos-unstable = import nixos-unstable {
               system = "${systemDefault}";
             };
-            nixpkgs-unstable = import nixpkgs-unstable {
-              system = "${systemDefault}";
-            };
           };
           modules = [
             ./hosts/${hostname}/home.nix
@@ -75,7 +70,8 @@
           modules = [
             ./hosts/${hostname}/configuration.nix
             (mkMyNixosOpts args) # pass the hostname and username as module options
-          ] ++ modules;
+          ]
+          ++ modules;
         };
     in
     {

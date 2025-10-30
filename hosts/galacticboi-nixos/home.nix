@@ -1,7 +1,6 @@
 {
   pkgs,
   nixos-unstable,
-  nixpkgs-unstable,
   config,
   ...
 }:
@@ -45,10 +44,7 @@
     obsidian
 
     ## unstable packages
-    # TODO: switch back to nixos-unstable after the QT 6.10 patch is merged into nixos-unstable
-    # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/by-name/az/azahar/package.nix
-    # nixos-unstable.azahar # Nintendo 3ds emulator
-    nixpkgs-unstable.azahar # Nintendo 3ds emulator
+    nixos-unstable.azahar # Nintendo 3ds emulator
   ];
 
   ######## Browser
