@@ -8,8 +8,8 @@ let
   yaziFlavors = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
     repo = "flavors";
-    rev = "main";
-    sha256 = "sha256-a9Ta0dLuxqay0TwcoAOzcQ0aqm40RyzFxXb25Qf8jcQ=";
+    rev = "f6b425a";
+    sha256 = "sha256-bavHcmeGZ49nNeM+0DSdKvxZDPVm3e6eaNmfmwfCid0=";
   };
   myFlavor = "catppuccin-frappe";
 in

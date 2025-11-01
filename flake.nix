@@ -28,6 +28,7 @@
       defaultUsername = "parkin";
       galacticboi-host = "galacticboi-nixos";
       wsl-host = "wsl-nixos";
+      dell-wsl-host = "dell-wsl-nixos";
       systemDefault = "x86_64-linux";
       # helper function for setting config.mynixos options
       mkMyNixosOpts =
@@ -90,6 +91,12 @@
           hostname = wsl-host;
           username = defaultUsername;
         };
+
+        ## Dell-WSL
+        "${defaultUsername}@${dell-wsl-host}" = mkHomeConfig {
+          hostname = dell-wsl-host;
+          username = defaultUsername;
+        };
       };
 
       ## NixOS config entrypoint
@@ -102,7 +109,7 @@
           username = defaultUsername;
         };
 
-        ## WSL
+        ## Lenovo WSL
         "${wsl-host}" = mkNixOSConfig {
           hostname = wsl-host;
           username = defaultUsername;
@@ -110,6 +117,16 @@
             nixos-wsl.nixosModules.default
           ];
         };
+
+	## Dell WSL
+        "${dell-wsl-host}" = mkNixOSConfig {
+          hostname = dell-wsl-host;
+          username = defaultUsername;
+          modules = [
+            nixos-wsl.nixosModules.default
+          ];
+        };
+
 
       };
 

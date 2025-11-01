@@ -4,7 +4,7 @@ My ever-changing dotfiles repo.
 
 ## Nix Config
 
-### Initial Setup
+### Initial Setup for new system
 
 Clone this repo into your `~/.dotfiles` directory.
 Note that this flake is impure, because it does reference absolute path of the neovim subdirectory here, in order to use `mkOutOfStoreSymlink` to symlink neovim config to this folder.
@@ -12,10 +12,20 @@ Note that this flake is impure, because it does reference absolute path of the n
 When starting up a new system, you may not find `home-manager` or `nh` commands available, so try
 
 ```shell
-nix shell nixpkgs#home-manager nixpkgs#nh
+nix shell nixpkgs#home-manager nixpkgs#nh nixpkgs#git nixpkgs#vim
 ```
 
 All the NixOs and home-manager build outputs are defined in [./flake.nix](./flake.nix).
+There, create new host/home-manager build outputs if needed.
+
+Then, rebuild boot (example here for `dell-wsl-nixos` host).
+(WSL note: see [this link](https://nix-community.github.io/NixOS-WSL/how-to/change-username.html) for warnings on changing username)
+
+```shell
+sudo nixos-rebuild boot --flake .#dell-wsl-nixos
+```
+
+Then restart, and `nh` should be available.
 
 ### Switching
 
