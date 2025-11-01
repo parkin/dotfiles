@@ -16,7 +16,6 @@
   nix.optimise.automatic = true;
 
   imports = [
-    # ./certificates.nix #TODO: re-enable certificates
     # include base
     ../base-os.nix
   ];
@@ -42,11 +41,10 @@
   };
 
   # mount the Windows Box folder
-  #TODO: re-enable box mounting
-  # fileSystems."/mnt/box" = {
-  #  device = "C:\\users\\8J5204897\\box";
-  #  fsType = "drvfs";
-  #};
+  fileSystems."/mnt/box" = {
+    device = "C:\\users\\WillParkin\\box";
+    fsType = "drvfs";
+  };
 
   # needed to use this to get pixi envs to work
   programs.nix-ld.enable = true;
