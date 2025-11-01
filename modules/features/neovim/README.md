@@ -2,7 +2,39 @@
 
 I started from [LazyVim](https://github.com/LazyVim/LazyVim), then made a lot of changes due to both `nix` and my own personal preferences.
 
-## Jupyter experience
+## Python repl
+
+### Iron.nvim
+
+I landed on [iron.nvim](https://github.com/Vigemus/iron.nvim) as the easiest to use.
+
+I typically have open
+
+1. neovim
+2. Iron repl inside neovim, which uses qtconsole
+3. Firefox browser to display plotly plots
+
+#### Plotly
+
+Unfortunately, [qtconsole](https://github.com/jupyter/qtconsole) doesn't display interactive [plotly](https://github.com/plotly/plotly.py) plots.
+
+So, in my wsl's [home.nix](../../../hosts/dell-wsl-nixos/home.nix), I added the following environment variables so that plotly interactive plots open in the browser.
+
+```nix
+programs.bash.sessionVariables = {
+  # Set extra variables for Plotly to render in the Windows browser.
+  # see https://plotly.com/python/renderers/
+  BROWSER = ''/mnt/c/Program Files/Mozilla Firefox/firefox.exe'';
+  PLOTLY_RENDERER = "browser";
+};
+
+```
+
+### Old molten config
+
+Molten was hogging a ton of cpu, so eventually I abandoned it.
+
+#### Jupyter experience
 
 I'm using [molten-nvim](https://github.com/benlubas/molten-nvim) and [NotebookNavigator.nvim](https://github.com/GCBallesteros/NotebookNavigator.nvim) for a Jupyter-like experience.
 
@@ -12,7 +44,7 @@ I have 3 windows open:
 2. [qtconsole](https://github.com/jupyter/qtconsole) window open to display images and other repl output.
 3. browser to display [plotly](https://github.com/plotly/plotly.py) interactive plots
 
-### Starting the kernel
+##### Starting the kernel
 
 See [molten's venv instructions](https://github.com/benlubas/molten-nvim/blob/main/docs/Virtual-Environments.md).
 
@@ -32,7 +64,7 @@ In neovim, you can use the following command to start the kernel:
 :MoltenInit project_name
 ```
 
-### Images
+##### Images
 
 I haven't yet tried to display images with molten.
 So for now, after starting molten, you can connect to the same kernel with [qtconsole](https://github.com/jupyter/qtconsole) by running the following in a different terminal:
@@ -44,19 +76,3 @@ jupyter qtconsole --existing --ConsoleWidget.include_other_output=True
 Note you should run this in the python env corresponding to the kernel.
 
 This allows you to view images (eg matplotlib plots).
-
-### Plotly
-
-Unfortunately, [qtconsole](https://github.com/jupyter/qtconsole) doesn't display interactive [plotly](https://github.com/plotly/plotly.py) plots.
-
-So, in my wsl's [home.nix](../../../hosts/wsl/home.nix), I added the following environment variables so that plotly interactive plots open in the browser.
-
-```nix
-programs.bash.sessionVariables = {
-  # Set extra variables for Plotly to render in the Windows browser.
-  # see https://plotly.com/python/renderers/
-  BROWSER = ''/mnt/c/Program Files/Mozilla Firefox/firefox.exe'';
-  PLOTLY_RENDERER = "browser";
-};
-
-```
