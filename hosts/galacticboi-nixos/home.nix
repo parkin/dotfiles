@@ -64,6 +64,7 @@
 
   programs.chromium = {
     enable = true;
+    package = (pkgs.chromium.override { enableWideVine = true; }); # enable DRM
     extensions = [
       ## Yomitan Popup Dictionary
       { id = "likgccmbimhjbgkjambclfkhldnlhbnn"; }
