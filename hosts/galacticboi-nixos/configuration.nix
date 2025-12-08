@@ -117,9 +117,13 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "adbusers" # enable Android adb
     ];
     packages = [ ];
   };
+
+  # enable Androind adb
+  programs.adb.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;

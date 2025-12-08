@@ -9,8 +9,10 @@
   # manage.
   home.username = "${config.mynixos.username}";
   home.homeDirectory = "/home/${config.home.username}";
-  programs.git.userName = "Will Parkin";
-  programs.git.userEmail = "wmparkin@gmail.com";
+  programs.git.settings.user = {
+    name = "Will Parkin";
+    email = "wmparkin@gmail.com";
+  };
 
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager

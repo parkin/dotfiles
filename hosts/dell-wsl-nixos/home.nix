@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }:
 let
@@ -20,8 +19,10 @@ in
   home.username = config.mynixos.username;
   home.homeDirectory = "/home/${config.mynixos.username}";
 
-  programs.git.userName = "Will Parkin";
-  programs.git.userEmail = "parkin@ibm.com";
+  programs.git.settings.user = {
+    name = "Will Parkin";
+    email = "parkin@ibm.com";
+  };
 
   programs.bash.sessionVariables = sessionVariables;
   programs.zsh.sessionVariables = sessionVariables;

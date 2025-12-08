@@ -5,10 +5,10 @@
   # https://github.com/Misterio77/nix-starter-configs
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixos-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
@@ -118,7 +118,7 @@
           ];
         };
 
-	## Dell WSL
+        ## Dell WSL
         "${dell-wsl-host}" = mkNixOSConfig {
           hostname = dell-wsl-host;
           username = defaultUsername;
@@ -126,7 +126,6 @@
             nixos-wsl.nixosModules.default
           ];
         };
-
 
       };
 
