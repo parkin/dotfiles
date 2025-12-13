@@ -31,8 +31,8 @@
     fonts.fontconfig.enable = true;
 
     fonts.fontconfig.defaultFonts = {
-      sansSerif = [ "Noto Sans JP" ];
-      serif = [ "Noto Serif JP" ];
+      sansSerif = [ "Noto Sans CJK JP" ];
+      serif = [ "Noto Serif CJK JP" ];
     };
 
     # this adds a config file.
