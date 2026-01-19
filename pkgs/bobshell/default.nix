@@ -31,8 +31,8 @@ pkgs.stdenv.mkDerivation rec {
 
     # install the bob script
     mkdir -p $out/bin
-    cp $NIX_BUILD_TOP/package/bundle/bob.js $out/bin/bobshell
-    chmod +x $out/bin/bobshell
+    cp $NIX_BUILD_TOP/package/bundle/bob.js $out/bin/bob
+    chmod +x $out/bin/bob
 
     # install the bobshell-latest-version command
     echo "curl -s https://s3.us-south.cloud-object-storage.appdomain.cloud/bobshell/bobshell-version.txt" >> $out/bin/bobshell-latest-version
