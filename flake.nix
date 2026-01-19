@@ -30,6 +30,17 @@
       wsl-host = "wsl-nixos";
       dell-wsl-host = "dell-wsl-nixos";
       systemDefault = "x86_64-linux";
+
+      overlays = [
+        (final: prev: {
+          bobshell = final.callPackage ./pkgs/bobshell { };
+        })
+      ];
+
+      pkgs = import nixpkgs {
+        system = systemDefault;
+        overlays = overlays;
+      };
       # helper function for setting config.mynixos options
       mkMyNixosOpts =
         { hostname, username, ... }:
@@ -41,9 +52,10 @@
       mkHomeConfig =
         args@{ hostname, ... }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = systemDefault;
-          };
+          inherit pkgs;
+          # pkgs = import nixpkgs {
+          #   system = systemDefault;
+          # };
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
@@ -76,6 +88,8 @@
         };
     in
     {
+      packages.${systemDefault}.bobshell = pkgs.bobshell;
+
       ## Standalone home-manager config entrypoint.
       # Available through `nh home switch`
       # (Also available through `home-manager --flake .#your-username@your-hostname`)
