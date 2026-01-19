@@ -71,7 +71,6 @@
     };
 
     home.packages = with pkgs; [
-      bobshell
       # dua disk usage analyzer
       dua
 
