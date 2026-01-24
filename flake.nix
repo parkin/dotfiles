@@ -12,6 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    bobshell.url = "git+ssh://git@github.ibm.com/parkin/bobshell-nix";
   };
 
   outputs =
@@ -31,15 +32,9 @@
       dell-wsl-host = "dell-wsl-nixos";
       systemDefault = "x86_64-linux";
 
-      overlays = [
-        (final: prev: {
-          bobshell = final.callPackage ./pkgs/bobshell { };
-        })
-      ];
-
       pkgs = import nixpkgs {
         system = systemDefault;
-        overlays = overlays;
+        overlays = [ inputs.bobshell.overlays.default ];
       };
       # helper function for setting config.mynixos options
       mkMyNixosOpts =
