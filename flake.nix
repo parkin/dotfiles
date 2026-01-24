@@ -32,7 +32,13 @@
       dell-wsl-host = "dell-wsl-nixos";
       systemDefault = "x86_64-linux";
 
+      # Default pkgs without bobshell (for hosts that can't access it)
       pkgs = import nixpkgs {
+        system = systemDefault;
+      };
+
+      # Separate pkgs with bobshell overlay (only for dell-wsl-host)
+      pkgs-with-bobshell = import nixpkgs {
         system = systemDefault;
         overlays = [ inputs.bobshell.overlays.default ];
       };
@@ -45,12 +51,13 @@
         };
       # helper function for homeManagerConfiguration for code reuse
       mkHomeConfig =
-        args@{ hostname, ... }:
+        args@{
+          hostname,
+          useBobshell ? false,
+          ...
+        }:
         home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          # pkgs = import nixpkgs {
-          #   system = systemDefault;
-          # };
+          pkgs = if useBobshell then pkgs-with-bobshell else pkgs;
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
@@ -83,7 +90,7 @@
         };
     in
     {
-      packages.${systemDefault}.bobshell = pkgs.bobshell;
+      packages.${systemDefault}.bobshell = pkgs-with-bobshell.bobshell;
 
       ## Standalone home-manager config entrypoint.
       # Available through `nh home switch`
@@ -105,6 +112,7 @@
         "${defaultUsername}@${dell-wsl-host}" = mkHomeConfig {
           hostname = dell-wsl-host;
           username = defaultUsername;
+          useBobshell = true;
         };
       };
 
