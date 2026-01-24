@@ -45,6 +45,9 @@
     ## obsidian md
     obsidian
 
+    # AI
+    claude-code
+
     ## unstable packages
     nixos-unstable.azahar # Nintendo 3ds emulator
   ];
