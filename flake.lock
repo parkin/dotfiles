@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1769727739,
-        "narHash": "sha256-Lq3s/Ncp9bd1rJzayVa1xwv4F3DFCW6lWi339OfUlIs=",
+        "lastModified": 1769788360,
+        "narHash": "sha256-lteeAJGdUOtOhPTW/3u7AVX3nCLvzaa0ZMqMAFqdrNI=",
         "ref": "refs/heads/main",
-        "rev": "56d63c4d32897f8a3f4a5a9d79723f1d7b863823",
-        "revCount": 10,
+        "rev": "0e5f1ef86e5bef6bb9f499c123248abdf4b0e66e",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.ibm.com/parkin/bobshell-nix"
       },
