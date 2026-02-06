@@ -1,11 +1,14 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
   statusLineFile = "statusline.sh";
+  settingsFile = "settings.json";
   statusLineFullPath = "${config.mynixos.dotfilesPath}/modules/features/claude-code/${statusLineFile}";
+  settingsFullPath = "${config.mynixos.dotfilesPath}/modules/features/claude-code/${settingsFile}";
 in
 {
   options = {
@@ -15,24 +18,15 @@ in
   };
   config = lib.mkIf config.myHomeManager.claude-code.enable {
 
-    programs.claude-code = {
-      enable = true;
-      settings = {
-        enabledPlugins = {
-          "gopls-lsp@claude-plugins-official" = true;
-        };
-        alwaysThinkingEnabled = true;
-        statusLine = {
-          type = "command";
-          command = statusLineFullPath;
-          padding = 2;
-        };
-      };
+    home.packages = with pkgs; [
+      claude-code
+    ];
 
-    };
-
-    xdg.configFile.${statusLineFile} = {
+    home.file.".claude/${statusLineFile}" = {
       source = config.lib.file.mkOutOfStoreSymlink statusLineFullPath;
+    };
+    home.file.".claude/${settingsFile}" = {
+      source = config.lib.file.mkOutOfStoreSymlink settingsFullPath;
     };
   };
 }

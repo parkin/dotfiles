@@ -1,0 +1,11 @@
+{
+  "alwaysThinkingEnabled": true,
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "statusLine": {
+    "command": "~/.claude/statusline.sh",
+    "padding": 2,
+    "type": "command"
+  }
+}
