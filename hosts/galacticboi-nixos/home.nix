@@ -33,6 +33,7 @@
     bundles.terminal.enable = true;
     kitty.enable = true;
     japanese.enable = true;
+    claude-code.enable = true;
   };
 
   # The home.packages option allows you to install Nix packages into your
@@ -44,9 +45,6 @@
     megasync
     ## obsidian md
     obsidian
-
-    # AI
-    claude-code
 
     ## unstable packages
     nixos-unstable.azahar # Nintendo 3ds emulator

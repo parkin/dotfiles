@@ -7,6 +7,7 @@
     ./anki.nix
     ./bash.nix
     ./bat.nix
+    ./claude-code
     ./eza.nix
     ./fzf.nix
     ./japanese
