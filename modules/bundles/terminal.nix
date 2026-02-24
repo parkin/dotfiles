@@ -3,6 +3,7 @@
   pkgs,
   lib,
   config,
+  taskeru,
   ...
 }:
 {
@@ -70,28 +71,31 @@
       };
     };
 
-    home.packages = with pkgs; [
+    home.packages = [
+      # taskeru TUI project management
+      taskeru
+
       # dua disk usage analyzer
-      dua
+      pkgs.dua
 
       # fd, modern find
-      fd
-      gnumake
+      pkgs.fd
+      pkgs.gnumake
       # neofetch is a terminal program to display system info
-      neofetch
+      pkgs.neofetch
       # tlrc is the Rust client for tldr (which is npm)
-      tlrc
-      taskjuggler
+      pkgs.tlrc
+      pkgs.taskjuggler
       # ripgrep, modern grep
-      ripgrep
+      pkgs.ripgrep
       # wget, needed for vscode
-      wget
+      pkgs.wget
 
       ## Nerdfonts
-      nerd-fonts.fira-code
+      pkgs.nerd-fonts.fira-code
       # other fonts
-      noto-fonts
-      noto-fonts-color-emoji
+      pkgs.noto-fonts
+      pkgs.noto-fonts-color-emoji
     ];
 
     # required to autoload fonts from packages installed via Home Manager

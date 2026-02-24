@@ -13,6 +13,9 @@
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     bobshell.url = "git+ssh://git@github.ibm.com/parkin/bobshell-nix";
+    taskeru = {
+      url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.1.0";
+    };
   };
 
   outputs =
@@ -64,6 +67,8 @@
             nixos-unstable = import nixos-unstable {
               system = "${systemDefault}";
             };
+            # pass taskeru package
+            taskeru = inputs.taskeru.packages.${systemDefault}.default;
           };
           modules = [
             ./hosts/${hostname}/home.nix
