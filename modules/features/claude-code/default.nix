@@ -13,7 +13,7 @@ in
 {
   options = {
     myHomeManager.claude-code.enable = lib.mkEnableOption "Enables claude-code" // {
-      default = true;
+      default = false;
     };
   };
   config = lib.mkIf config.myHomeManager.claude-code.enable {
