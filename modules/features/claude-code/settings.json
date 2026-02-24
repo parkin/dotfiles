@@ -7,5 +7,5 @@
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": false
 }
