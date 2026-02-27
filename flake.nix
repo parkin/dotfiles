@@ -14,7 +14,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     bobshell.url = "git+ssh://git@github.ibm.com/parkin/bobshell-nix";
     taskeru = {
-      url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.3.1";
+      url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.7.0";
     };
   };
 
