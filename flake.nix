@@ -39,12 +39,6 @@
       pkgs = import nixpkgs {
         system = systemDefault;
       };
-
-      # Separate pkgs with bobshell overlay (only for dell-wsl-host)
-      pkgs-with-bobshell = import nixpkgs {
-        system = systemDefault;
-        overlays = [ inputs.bobshell.overlays.default ];
-      };
       # helper function for setting config.mynixos options
       mkMyNixosOpts =
         { hostname, username, ... }:
@@ -59,8 +53,19 @@
           useBobshell ? false,
           ...
         }:
+        let
+          # Only evaluate bobshell overlay when actually needed (lazy evaluation)
+          effectivePkgs =
+            if useBobshell then
+              import nixpkgs {
+                system = systemDefault;
+                overlays = [ inputs.bobshell.overlays.default ];
+              }
+            else
+              pkgs;
+        in
         home-manager.lib.homeManagerConfiguration {
-          pkgs = if useBobshell then pkgs-with-bobshell else pkgs;
+          pkgs = effectivePkgs;
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
@@ -96,8 +101,6 @@
         };
     in
     {
-      packages.${systemDefault}.bobshell = pkgs-with-bobshell.bobshell;
-
       ## Standalone home-manager config entrypoint.
       # Available through `nh home switch`
       # (Also available through `home-manager --flake .#your-username@your-hostname`)
