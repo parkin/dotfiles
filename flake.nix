@@ -12,7 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    bobshell.url = "git+ssh://git@github.ibm.com/parkin/bobshell-nix";
     taskeru = {
       url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.7.0";
     };
@@ -35,9 +34,15 @@
       dell-wsl-host = "dell-wsl-nixos";
       systemDefault = "x86_64-linux";
 
-      # Default pkgs without bobshell (for hosts that can't access it)
+      overlays = [
+        (final: prev: {
+          bobshell = final.callPackage ./pkgs/bobshell { };
+        })
+      ];
+
       pkgs = import nixpkgs {
         system = systemDefault;
+        overlays = overlays;
       };
       # helper function for setting config.mynixos options
       mkMyNixosOpts =
@@ -48,24 +53,12 @@
         };
       # helper function for homeManagerConfiguration for code reuse
       mkHomeConfig =
-        args@{
-          hostname,
-          useBobshell ? false,
-          ...
-        }:
-        let
-          # Only evaluate bobshell overlay when actually needed (lazy evaluation)
-          effectivePkgs =
-            if useBobshell then
-              import nixpkgs {
-                system = systemDefault;
-                overlays = [ inputs.bobshell.overlays.default ];
-              }
-            else
-              pkgs;
-        in
+        args@{ hostname, ... }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = effectivePkgs;
+          inherit pkgs;
+          # pkgs = import nixpkgs {
+          #   system = systemDefault;
+          # };
           extraSpecialArgs = {
             inherit inputs outputs;
             # pass unstable packages
@@ -101,6 +94,8 @@
         };
     in
     {
+      packages.${systemDefault}.bobshell = pkgs.bobshell;
+
       ## Standalone home-manager config entrypoint.
       # Available through `nh home switch`
       # (Also available through `home-manager --flake .#your-username@your-hostname`)
@@ -121,7 +116,6 @@
         "${defaultUsername}@${dell-wsl-host}" = mkHomeConfig {
           hostname = dell-wsl-host;
           username = defaultUsername;
-          useBobshell = true;
         };
       };
 
