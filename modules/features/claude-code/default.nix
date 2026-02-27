@@ -1,7 +1,7 @@
 {
   lib,
   config,
-  pkgs,
+  nixos-unstable,
   ...
 }:
 let
@@ -18,8 +18,8 @@ in
   };
   config = lib.mkIf config.myHomeManager.claude-code.enable {
 
-    home.packages = with pkgs; [
-      claude-code
+    home.packages = [
+      nixos-unstable.claude-code
     ];
 
     home.file.".claude/${statusLineFile}" = {

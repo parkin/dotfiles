@@ -66,6 +66,7 @@
             # pass unstable packages
             nixos-unstable = import nixos-unstable {
               system = "${systemDefault}";
+              config.allowUnfree = true;
             };
             # pass taskeru package
             taskeru = inputs.taskeru.packages.${systemDefault}.default;
