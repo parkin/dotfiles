@@ -15,6 +15,10 @@
     taskeru = {
       url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.26.0";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -24,6 +28,7 @@
       nixos-unstable,
       home-manager,
       nixos-wsl,
+      disko,
       ...
     }@inputs:
     let
@@ -32,6 +37,7 @@
       galacticboi-host = "galacticboi-nixos";
       wsl-host = "wsl-nixos";
       dell-wsl-host = "dell-wsl-nixos";
+      nix-remote-host = "nix-remote";
       systemDefault = "x86_64-linux";
 
       overlays = [
@@ -117,6 +123,12 @@
           hostname = dell-wsl-host;
           username = defaultUsername;
         };
+
+        ## Hetzner remote server
+        "${defaultUsername}@${nix-remote-host}" = mkHomeConfig {
+          hostname = nix-remote-host;
+          username = defaultUsername;
+        };
       };
 
       ## NixOS config entrypoint
@@ -144,6 +156,15 @@
           username = defaultUsername;
           modules = [
             nixos-wsl.nixosModules.default
+          ];
+        };
+
+        ## Hetzner remote server
+        "${nix-remote-host}" = mkNixOSConfig {
+          hostname = nix-remote-host;
+          username = defaultUsername;
+          modules = [
+            disko.nixosModules.disko
           ];
         };
 
