@@ -80,6 +80,7 @@
 
       # fd, modern find
       pkgs.fd
+      pkgs.gh
       pkgs.gnumake
       # neofetch is a terminal program to display system info
       pkgs.neofetch
