@@ -19,6 +19,8 @@
   myHomeManager = {
     bundles.terminal.enable = true;
     claude-code.enable = true;
+    zellij.lockKeybind = "Ctrl b";
+    zellij.theme = "gruvbox-dark";
   };
 
   home.stateVersion = "25.11";
