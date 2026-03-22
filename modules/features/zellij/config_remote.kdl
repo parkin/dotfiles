@@ -373,7 +373,7 @@ keybinds clear-defaults=true {
         bind "Ctrl Alt right" {
             MoveFocusOrTab "right"
         }
-        bind Ctrl "Alt +" {
+        bind "Ctrl Alt +" {
             Resize "Increase"
         }
         bind "Ctrl Alt -" {
