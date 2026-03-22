@@ -7,15 +7,10 @@
 {
   options = {
     myHomeManager.zellij.enable = lib.mkEnableOption "Enables zellij";
-    myHomeManager.zellij.lockKeybind = lib.mkOption {
+    myHomeManager.zellij.configSource = lib.mkOption {
       type = lib.types.str;
-      default = "Ctrl a";
-      description = "Keybind to switch from locked mode to normal mode in zellij";
-    };
-    myHomeManager.zellij.theme = lib.mkOption {
-      type = lib.types.str;
-      default = "catppuccin-macchiato";
-      description = "Zellij color theme";
+      default = "${config.mynixos.dotfilesPath}/modules/features/zellij/config.kdl";
+      description = "Path to the zellij config.kdl source file";
     };
   };
 
@@ -26,17 +21,7 @@
     ];
     # allow for overriding the locked keybind
     xdg.configFile."zellij/config.kdl" = {
-      text =
-        builtins.replaceStrings
-          [
-            "bind \"Ctrl a\" { SwitchToMode \"normal\"; }"
-            "theme \"catppuccin-macchiato\""
-          ]
-          [
-            "bind \"${config.myHomeManager.zellij.lockKeybind}\" { SwitchToMode \"normal\"; }"
-            "theme \"${config.myHomeManager.zellij.theme}\""
-          ]
-          (builtins.readFile ./config.kdl);
+      source = config.lib.file.mkOutOfStoreSymlink config.myHomeManager.zellij.configSource;
     };
     # the older version wasn't working well for me yet on nix
     # programs.zellij = {

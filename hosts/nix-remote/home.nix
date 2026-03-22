@@ -19,8 +19,7 @@
   myHomeManager = {
     bundles.terminal.enable = true;
     claude-code.enable = true;
-    zellij.lockKeybind = "Ctrl b";
-    zellij.theme = "gruvbox-dark";
+    zellij.configSource = "${config.mynixos.dotfilesPath}/modules/features/zellij/config_remote.kdl";
   };
 
   # You should not change this value, even if you update Home Manager. If you do

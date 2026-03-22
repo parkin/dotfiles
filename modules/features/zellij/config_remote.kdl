@@ -1,6 +1,7 @@
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl a" {
+        // use Ctrl b for remote, to not conflict with my main laptop
+        bind "Ctrl b" {
             SwitchToMode "normal"
         }
     }
@@ -261,19 +262,20 @@ keybinds clear-defaults=true {
         }
     }
     scroll {
-        bind "Alt left" {
+        // Use "Ctrl Alt" for remote keybindings, to not conflict with my main laptop
+        bind "Ctrl Alt left" {
             MoveFocusOrTab "left"
             SwitchToMode "locked"
         }
-        bind "Alt down" {
+        bind "Ctrl Alt down" {
             MoveFocus "down"
             SwitchToMode "locked"
         }
-        bind "Alt up" {
+        bind "Ctrl Alt up" {
             MoveFocus "up"
             SwitchToMode "locked"
         }
-        bind "Alt right" {
+        bind "Ctrl Alt right" {
             MoveFocusOrTab "right"
             SwitchToMode "locked"
         }
@@ -285,19 +287,19 @@ keybinds clear-defaults=true {
             SwitchToMode "entersearch"
             SearchInput 0
         }
-        bind "Alt h" {
+        bind "Ctrl Alt h" {
             MoveFocusOrTab "left"
             SwitchToMode "locked"
         }
-        bind "Alt j" {
+        bind "Ctrl Alt j" {
             MoveFocus "down"
             SwitchToMode "locked"
         }
-        bind "Alt k" {
+        bind "Ctrl Alt k" {
             MoveFocus "up"
             SwitchToMode "locked"
         }
-        bind "Alt l" {
+        bind "Ctrl Alt l" {
             MoveFocusOrTab "right"
             SwitchToMode "locked"
         }
@@ -359,55 +361,55 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Alt left" {
+        bind "Ctrl Alt left" {
             MoveFocusOrTab "left"
         }
-        bind "Alt down" {
+        bind "Ctrl Alt down" {
             MoveFocus "down"
         }
-        bind "Alt up" {
+        bind "Ctrl Alt up" {
             MoveFocus "up"
         }
-        bind "Alt right" {
+        bind "Ctrl Alt right" {
             MoveFocusOrTab "right"
         }
-        bind "Alt +" {
+        bind Ctrl "Alt +" {
             Resize "Increase"
         }
-        bind "Alt -" {
+        bind "Ctrl Alt -" {
             Resize "Decrease"
         }
-        bind "Alt =" {
+        bind "Ctrl Alt =" {
             Resize "Increase"
         }
-        bind "Alt [" {
+        bind "Ctrl Alt [" {
             PreviousSwapLayout
         }
-        bind "Alt ]" {
+        bind "Ctrl Alt ]" {
             NextSwapLayout
         }
-        bind "Alt f" {
+        bind "Ctrl Alt f" {
             ToggleFloatingPanes
         }
-        bind "Alt h" {
+        bind "Ctrl Alt h" {
             MoveFocusOrTab "left"
         }
-        bind "Alt i" {
+        bind "Ctrl Alt i" {
             MoveTab "left"
         }
-        bind "Alt j" {
+        bind "Ctrl Alt j" {
             MoveFocus "down"
         }
-        bind "Alt k" {
+        bind "Ctrl Alt k" {
             MoveFocus "up"
         }
-        bind "Alt l" {
+        bind "Ctrl Alt l" {
             MoveFocusOrTab "right"
         }
-        bind "Alt n" {
+        bind "Ctrl Alt n" {
             NewPane
         }
-        bind "Alt o" {
+        bind "Ctrl Alt o" {
             MoveTab "right"
         }
     }
@@ -572,7 +574,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "catppuccin-macchiato"
+theme "gruvbox-dark"
 // Choose the base input mode of zellij.
 // Default: normal
 //
