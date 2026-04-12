@@ -86,7 +86,6 @@
       pkgs.neofetch
       # tlrc is the Rust client for tldr (which is npm)
       pkgs.tlrc
-      pkgs.taskjuggler
       # ripgrep, modern grep
       pkgs.ripgrep
       # wget, needed for vscode
