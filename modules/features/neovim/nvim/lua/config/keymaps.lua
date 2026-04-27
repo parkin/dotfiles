@@ -10,3 +10,9 @@ map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>")
 map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>")
 map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>")
 map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>")
+
+-- For terminal buffers, use <Esc><Esc> to return to normal mode in the terminal buffer.
+-- <C-\> was being captured by windows terminal, needed to change.
+map("t", "<Esc><Esc>", [[<C-\><C-n>]], {
+  desc = "Exit terminal mode (double ESC)",
+})
