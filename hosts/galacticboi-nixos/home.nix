@@ -46,6 +46,8 @@
     ## obsidian md
     obsidian
 
+    prismlauncher
+
     ## unstable packages
     nixos-unstable.azahar # Nintendo 3ds emulator
   ];
