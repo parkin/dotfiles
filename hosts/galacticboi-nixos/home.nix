@@ -54,7 +54,12 @@
   ];
 
   ######## Browser
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    # new default configPath for 26.05
+    # Need to set manually since I am using home.stateVersion less than 26.05
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+  };
 
   xdg.mimeApps = {
     enable = true;
