@@ -62,3 +62,9 @@ nix flake update
 ## Neovim
 
 See [my neovim setup](./modules/features/neovim/README.md)
+
+## Current issues
+
+Nixpkgs 26.05
+
+- [electron v39 EOL](https://github.com/NixOS/nixpkgs/issues/521305) affecting bitwarden.
