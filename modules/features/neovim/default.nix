@@ -43,7 +43,7 @@
       ###### Formatters, see my setup in (~/.config/nvim/lua/plugins/conform.lua)
       nixos-unstable.kdlfmt
       jq # json
-      nixfmt-rfc-style
+      nixfmt
       gofumpt
       ruff
       prettierd
@@ -66,6 +66,9 @@
       vimdiffAlias = true;
       # needed to use my custom init.lua
       sideloadInitLua = true;
+      # keep my old pre-26.05 defaults
+      withRuby = true;
+      withPython3 = true;
     };
 
     home.sessionVariables = {
