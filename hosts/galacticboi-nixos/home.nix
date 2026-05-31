@@ -41,6 +41,7 @@
   home.packages = with pkgs; [
     audacity
     bitwarden-desktop
+    calibre
     cryptomator
     megasync
     ## obsidian md
