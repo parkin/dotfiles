@@ -82,8 +82,6 @@
       pkgs.fd
       pkgs.gh
       pkgs.gnumake
-      # neofetch is a terminal program to display system info
-      pkgs.neofetch
       # tlrc is the Rust client for tldr (which is npm)
       pkgs.tlrc
       # ripgrep, modern grep
