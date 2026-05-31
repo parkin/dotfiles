@@ -64,6 +64,8 @@
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+      # needed to use my custom init.lua
+      sideloadInitLua = true;
     };
 
     home.sessionVariables = {
