@@ -48,7 +48,6 @@
 
   # enable OpenGL / GPU Support
   hardware.graphics.enable = true;
-  hardware.opengl.enable = true;
 
   wsl.useWindowsDriver = true;
 
@@ -73,8 +72,6 @@
     cudatoolkit
     # add an editor in case we can't access the user for some reason
     neovim
-    # WSL utilities
-    wslu
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
