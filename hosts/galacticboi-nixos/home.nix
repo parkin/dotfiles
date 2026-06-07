@@ -41,6 +41,8 @@
   home.packages = with pkgs; [
     audacity
     bitwarden-desktop
+    digital
+    discord
     calibre
     cryptomator
     megasync
