@@ -13,11 +13,11 @@
 
 pkgs.stdenv.mkDerivation rec {
   pname = "bobshell";
-  version = "1.0.4";
+  version = "1.0.5";
 
   src = fetchurl {
     url = "http://bob-bot1.fyre.ibm.com:3000/cos-assets/bobshell/bobshell-${version}.tgz";
-    sha256 = "sha256-Eo+NqLw6Sh6wet1KvPBTBglmFfF3oy0CBYUyyUW1SJ4=";
+    sha256 = "sha256-OP425CMYKC2LRANAp3a7Furv4+qiaBGEx4Y3O1AfK/c=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
