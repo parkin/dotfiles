@@ -40,7 +40,7 @@
   # environment.
   home.packages = with pkgs; [
     audacity
-    nixos-unstable.bitwarden-desktop
+    bitwarden-desktop
     digital
     discord
     calibre
