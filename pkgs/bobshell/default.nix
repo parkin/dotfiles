@@ -1,6 +1,7 @@
 {
   lib,
   fetchurl,
+  fetchzip,
   makeWrapper,
   nodejs_22,
   coreutils,
@@ -11,43 +12,72 @@
   pkgs ? import <nixpkgs> { },
 }:
 
+let
+  # Fetch the @lydell/node-pty dependency from npm registry
+  nodePty = fetchzip {
+    url = "https://registry.npmjs.org/@lydell/node-pty/-/node-pty-1.1.0.tgz";
+    hash = "sha256-JDcDoFNU+T2kbjh9PlWw6zJJurjHqWe5CrBV08ONTiw=";
+    stripRoot = false;
+  };
+
+  # Fetch the platform-specific binary for linux-x64
+  nodePtyLinuxX64 = fetchzip {
+    url = "https://registry.npmjs.org/@lydell/node-pty-linux-x64/-/node-pty-linux-x64-1.1.0.tgz";
+    hash = "sha256-xAFMHyBpWIF6L3z7dcnuZYyhFKnjKzGmrpaCPxzfi2Y=";
+    stripRoot = false;
+  };
+in
 pkgs.stdenv.mkDerivation rec {
   pname = "bobshell";
-  version = "1.0.6";
+  version = "2.0.0";
 
   src = fetchurl {
     url = "http://bob-bot1.fyre.ibm.com:3000/cos-assets/bobshell/bobshell-${version}.tgz";
-    sha256 = "sha256-bsUavsQlHUHsRXCQMJiLkLqmWfU1/I0U3QAwI90WOls=";
+    sha256 = "sha256-3i13Pn56ec3fZx0QGciFL1i0xEcvluzPSiO5/qxiCBI=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+    nodejs_22
+  ];
 
   # CRITICAL: Prevent Nix from modifying files
   dontStrip = true;
   dontPatchELF = true;
   dontPatchShebangs = true;
-  dontFixup = false; # We need fixup for makeWrapper, but control what gets fixed
 
   unpackPhase = ''
     runHook preUnpack
-    mkdir -p $out/lib/bobshell
-    tar xzf $src -C $out/lib/bobshell --strip-components=1
+    mkdir -p bobshell
+    tar xzf $src -C bobshell --strip-components=1
+    cd bobshell
     runHook postUnpack
   '';
 
-  # Skip build phase entirely
-  dontBuild = true;
+  buildPhase = ''
+    runHook preBuild
+
+    # Create node_modules directory and install the dependencies
+    mkdir -p node_modules/@lydell
+    cp -r ${nodePty}/package node_modules/@lydell/node-pty
+    cp -r ${nodePtyLinuxX64}/package node_modules/@lydell/node-pty-linux-x64
+
+    runHook postBuild
+  '';
 
   installPhase = ''
         runHook preInstall
 
+        mkdir -p $out/lib/bobshell
+        cp -r . $out/lib/bobshell/
+        
         mkdir -p $out/bin
 
         # Create wrapper that calls bob.js directly without modifying it
         # bob.js uses the hash of its own file to decrypt a secret
         # so we need to NOT modify it
         makeWrapper ${nodejs_22}/bin/node $out/bin/bob \
-          --add-flags "$out/lib/bobshell/bundle/bob.js" \
+          --add-flags "$out/lib/bobshell/dist/bob.js" \
           --prefix PATH : ${
             lib.makeBinPath [
               nodejs_22
@@ -59,7 +89,7 @@ pkgs.stdenv.mkDerivation rec {
             ]
           }
 
-        # Create bob-latest-version command that compares versions
+        # Create bob-check-latest-version command that compares versions
         cat > $out/bin/bob-check-latest-version <<'EOF'
     #!/usr/bin/env bash
     set -euo pipefail
@@ -84,12 +114,6 @@ pkgs.stdenv.mkDerivation rec {
         chmod +x $out/bin/bob-check-latest-version
 
         runHook postInstall
-  '';
-
-  # Don't patch shebangs in the bundle directory
-  postFixup = ''
-    # Restore original bob.js if it was modified
-    chmod -R u+w $out/lib/bobshell/bundle/
   '';
 
   meta = with lib; {
