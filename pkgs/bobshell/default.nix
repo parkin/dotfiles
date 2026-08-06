@@ -4,6 +4,7 @@
   fetchzip,
   makeWrapper,
   nodejs_22,
+  cacert,
   coreutils,
   curl,
   gnused,
@@ -78,6 +79,8 @@ pkgs.stdenv.mkDerivation rec {
         # so we need to NOT modify it
         makeWrapper ${nodejs_22}/bin/node $out/bin/bob \
           --add-flags "$out/lib/bobshell/dist/bob.js" \
+          --set SSL_CERT_FILE "${cacert}/etc/ssl/certs/ca-bundle.crt" \
+          --set SSL_CERT_DIR "${cacert}/etc/ssl/certs" \
           --prefix PATH : ${
             lib.makeBinPath [
               nodejs_22
