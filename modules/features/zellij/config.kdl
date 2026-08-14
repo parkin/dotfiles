@@ -582,4 +582,10 @@ default_mode "locked"
 // Default: true
 //
 show_startup_tips false
+// ----------------------------
+// Enable sixel graphics passthrough (required for image rendering in Neovim
+// via image.nvim with the sixel backend on Windows Terminal)
+// Default: false
+//
+sixel_support true
 
