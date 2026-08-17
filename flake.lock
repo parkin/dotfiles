@@ -190,16 +190,16 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1786899451,
-        "narHash": "sha256-nufNwPjq6byXuQ/vLI7D1PvrI+gHishmIAOK6eqczpc=",
-        "ref": "refs/tags/v0.50.1",
-        "rev": "f7a2801cc2401ed4180b7d218a1d67b3d539a865",
-        "revCount": 1036,
+        "lastModified": 1786972513,
+        "narHash": "sha256-PPGMRLgzQedUumKigLT6POZkZyLs55Wec7uK7B7nXx8=",
+        "ref": "refs/tags/v0.50.3",
+        "rev": "cdc07e11671f200436c99d568395db853126e002",
+        "revCount": 1050,
         "type": "git",
         "url": "ssh://git@github.com/parkin/taskeru.git"
       },
       "original": {
-        "ref": "refs/tags/v0.50.1",
+        "ref": "refs/tags/v0.50.3",
         "type": "git",
         "url": "ssh://git@github.com/parkin/taskeru.git"
       }
