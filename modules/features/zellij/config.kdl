@@ -411,6 +411,11 @@ keybinds clear-defaults=true {
             MoveTab "right"
         }
     }
+    shared_except "locked" {
+        // Unbind the default Zellij pane movement to let Neovim capture it when Zellij is locked
+        unbind "Alt h"
+        unbind "Alt l"
+    }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" {
             SwitchToMode "locked"
