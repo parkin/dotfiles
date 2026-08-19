@@ -392,12 +392,6 @@ keybinds clear-defaults=true {
         bind "Alt i" {
             MoveTab "left"
         }
-        bind "Alt j" {
-            MoveFocus "down"
-        }
-        bind "Alt k" {
-            MoveFocus "up"
-        }
         bind "Alt n" {
             NewPane
         }
@@ -405,7 +399,7 @@ keybinds clear-defaults=true {
             MoveTab "right"
         }
     }
-    // Alt-h / Alt-l are deliberately NOT bound in locked mode (the default mode)
+    // Alt-h,l,j,k are deliberately NOT bound in locked mode (the default mode)
     // so Neovim can capture them. Use Alt-left / Alt-right for pane focus there.
     normal {
         bind "Alt h" {
@@ -413,6 +407,12 @@ keybinds clear-defaults=true {
         }
         bind "Alt l" {
             MoveFocusOrTab "right"
+        }
+        bind "Alt j" {
+            MoveFocus "down"
+        }
+        bind "Alt k" {
+            MoveFocus "up"
         }
     }
     shared_except "locked" "renametab" "renamepane" {
