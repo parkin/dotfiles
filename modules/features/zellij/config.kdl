@@ -416,7 +416,7 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" "renametab" "renamepane" {
-        bind "Ctrl g" {
+        bind "Ctrl a" {
             SwitchToMode "locked"
         }
         bind "Ctrl q" {
