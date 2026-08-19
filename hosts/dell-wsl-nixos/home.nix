@@ -12,6 +12,19 @@ let
     # set WebAgg as default backend for matplotlib
     MPLBACKEND = "webagg";
   };
+
+  # obsidian, but disconnected from the internet
+  obsidian-offline = pkgs.symlinkJoin {
+    name = "obsidian-offline";
+    paths = [ pkgs.obsidian ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      rm $out/bin/obsidian
+      makeWrapper ${pkgs.bubblewrap}/bin/bwrap $out/bin/obsidian \
+        --add-flags "--dev-bind / / --unshare-net --die-with-parent" \
+        --add-flags "${pkgs.obsidian}/bin/obsidian"
+    '';
+  };
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -82,6 +95,7 @@ in
     wsl-open
     bobshell
     imagemagick
+    obsidian-offline
   ];
 
 }
