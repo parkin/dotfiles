@@ -40,7 +40,7 @@
   # environment.
   home.packages = with pkgs; [
     audacity
-    bitwarden-desktop
+    nixos-unstable.bitwarden-desktop # need 2026.8.0+ due to clipboard issue with 2026.7.0
     digital
     discord
     calibre
