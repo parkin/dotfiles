@@ -587,5 +587,5 @@ show_startup_tips false
 // via image.nvim with the sixel backend on Windows Terminal)
 // Default: false
 //
-sixel_support true
+sixel_support false
 
