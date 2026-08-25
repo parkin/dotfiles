@@ -13,7 +13,7 @@
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     taskeru = {
-      url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.53.0";
+      url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.53.1";
     };
     disko = {
       url = "github:nix-community/disko";
