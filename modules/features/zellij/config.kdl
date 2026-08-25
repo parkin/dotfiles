@@ -588,4 +588,7 @@ show_startup_tips false
 // Default: false
 //
 sixel_support false
-
+// --------------------------
+// Title frames: pane frames now default to a single title line above each pane instead of a full border.
+// This restores the classic look:
+pane_frame_style "full"
