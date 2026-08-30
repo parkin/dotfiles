@@ -81,6 +81,7 @@
       # fd, modern find
       pkgs.fd
       pkgs.gh
+      pkgs.git-crypt
       pkgs.gnumake
       # tlrc is the Rust client for tldr (which is npm)
       pkgs.tlrc
