@@ -130,6 +130,15 @@
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };
+
+    programs.gpg.enable = true;
+    services.gpg-agent = {
+      enable = true;
+      enableSshSupport = true; # use your GPG auth subkey as an SSH key
+      pinentry.package = pkgs.pinentry-curses; # or pinentry-gnome3, pinentry-qt, pinentry-mac
+      defaultCacheTtl = 3600;
+      maxCacheTtl = 86400;
+    };
   };
 
 }
