@@ -81,6 +81,8 @@
     extensions = [
       ## Yomitan Popup Dictionary
       { id = "likgccmbimhjbgkjambclfkhldnlhbnn"; }
+      ## asbplayer
+      { id = "hkledmpjpaehamkiehglnbelcpdflcab"; }
     ];
   };
 
