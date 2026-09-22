@@ -30,6 +30,7 @@
   ## These options are defined in the modules imported above.
   myHomeManager = {
     anki.enable = true;
+    browser-extensions.enable = true;
     bundles.terminal.enable = true;
     kitty.enable = true;
     japanese.enable = true;
