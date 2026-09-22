@@ -59,52 +59,9 @@ Use the following to upgrade the flake, which you should do periodically.
 nix flake update
 ```
 
-## Browser Extension Settings
+## Hosts
 
-Yomitan and asbplayer keep their settings in `chrome.storage.local`, and neither
-declares a `managed_schema`, so Chromium's enterprise policy can't seed them.
-Instead, [./modules/features/browser-extensions](./modules/features/browser-extensions)
-version-controls each extension's own backup file and symlinks it into `$HOME`.
-
-Enable it per-host with `myHomeManager.browser-extensions.enable = true;`.
-
-### Restoring on a new system
-
-After Chromium has installed the extensions, import from the settings page:
-
-| Extension | Where | File |
-| --- | --- | --- |
-| Yomitan | settings -> Backup -> Import Settings | `~/yomitan-settings.json` |
-| asbplayer | options -> Import Settings | `~/asbplayer-settings.json` |
-
-Yomitan dictionaries live in IndexedDB and are **not** part of the settings
-backup -- it only references them by name. Re-import the dictionary zips, or use
-Yomitan's Export/Import Dictionary buttons, or the restored profile will point at
-dictionaries that aren't installed.
-
-### Saving changes back
-
-The files are `mkOutOfStoreSymlink`s, so exporting over the symlinked path writes
-straight back into this repo and `git diff` shows what changed.
-
-```shell
-git diff modules/features/browser-extensions
-```
-
-### Adding a new extension
-
-Drop the exported JSON next to the module as `<name>-settings.json` and add a
-`linkIfPresent "<name>-settings.json"` to `home.file`.
-
-Two gotchas, both of which fail silently:
-
-- The file must be **git-tracked**. The module tests existence against `./.` (the
-  store copy of the module directory), and flakes only copy tracked files into
-  the store, so an untracked export is invisible.
-- That existence check must stay on `./.` rather than `config.mynixos.dotfilesPath`.
-  A path outside the store reads as missing under pure evaluation, and since
-  `nh home switch` evaluates pure by default, checking the out-of-store path drops
-  every file in the module and reports "No version or size changes".
+- [Galacticboi nixos](/hosts/galacticboi-nixos/README.md)
 
 ## Neovim
 

@@ -110,6 +110,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  services.syncthing = {
+    enable = true;
+    user = "${config.mynixos.username}";
+    dataDir = "/home/${config.mynixos.username}"; # default folder location
+    configDir = "/home/${config.mynixos.username}/.config/syncthing";
+    openDefaultPorts = true; # 22000 TCP/UDP, 21027 UDP discovery
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${config.mynixos.username} = {
     isNormalUser = true;
