@@ -4,15 +4,6 @@
   ...
 }:
 let
-  sessionVariables = {
-    # Set extra variables for Plotly to render in the Windows browser.
-    # see https://plotly.com/python/renderers/
-    BROWSER = "/mnt/c/Program Files/Mozilla Firefox/firefox.exe";
-    PLOTLY_RENDERER = "browser";
-    # set WebAgg as default backend for matplotlib
-    MPLBACKEND = "webagg";
-  };
-
   # obsidian, but disconnected from the internet
   obsidian-offline = pkgs.symlinkJoin {
     name = "obsidian-offline";
@@ -37,8 +28,6 @@ in
     email = "parkin@ibm.com";
   };
 
-  programs.bash.sessionVariables = sessionVariables;
-  programs.zsh.sessionVariables = sessionVariables;
   # add extra line to auto-launch ssh-agent and use ssh-add for WSL
   # see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows
   programs.zsh.initContent = ''
