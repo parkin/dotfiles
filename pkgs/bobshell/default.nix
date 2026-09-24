@@ -30,11 +30,11 @@ let
 in
 pkgs.stdenv.mkDerivation rec {
   pname = "bobshell";
-  version = "2.0.4";
+  version = "2.0.5";
 
   src = fetchurl {
     url = "https://s3.us-south.cloud-object-storage.appdomain.cloud/bob-shell/bobshell-${version}.tgz";
-    sha256 = "sha256-EN4Ef/3COlDz4e9p+tO2MT/23aABBYmiLv4mskaFJUs=";
+    sha256 = "sha256-7/Iy6xtp80+YTd0pXmlgRwBYypIrHHUYecWo0GGZ9WY=";
   };
 
   nativeBuildInputs = [
