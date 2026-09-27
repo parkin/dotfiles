@@ -1,6 +1,6 @@
 {
     "version": 0,
-    "date": "2026-09-22 11:47:21",
+    "date": "2026-09-27 02:38:54",
     "url": "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn/",
     "manifest": {
         "action": {
@@ -166,7 +166,7 @@
                         "resultOutputMode": "group",
                         "debugInfo": false,
                         "maxResults": 32,
-                        "showAdvanced": false,
+                        "showAdvanced": true,
                         "showDebug": false,
                         "popupDisplayMode": "default",
                         "popupFullWidthPosition": "bottom",
@@ -452,7 +452,7 @@
                                         "overwriteMode": "coalesce"
                                     },
                                     "ExpressionFurigana": {
-                                        "value": "{furigana}",
+                                        "value": "{furigana-plain}",
                                         "overwriteMode": "coalesce"
                                     },
                                     "ExpressionReading": {
@@ -556,7 +556,7 @@
                             }
                         ],
                         "duplicateScope": "collection",
-                        "duplicateScopeCheckAllModels": false,
+                        "duplicateScopeCheckAllModels": true,
                         "checkForDuplicates": true,
                         "duplicateBehavior": "new",
                         "fieldTemplates": null,
@@ -567,7 +567,7 @@
                         "apiKey": "",
                         "downloadTimeout": 0,
                         "forceSync": false,
-                        "noteDupeCheckFirst": false
+                        "noteDupeCheckFirst": true
                     },
                     "sentenceParsing": {
                         "scanExtent": 200,
