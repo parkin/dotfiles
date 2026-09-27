@@ -83,6 +83,16 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+
+    # Disable auto-switching to the low-quality headset profile
+    wireplumber.extraConfig = {
+      "11-bluetooth-policy" = {
+        "wireplumber.settings" = {
+          "bluetooth.autoswitch-to-headset-profile" = false;
+        };
+      };
+    };
+
   };
 
   # Remap some keys
