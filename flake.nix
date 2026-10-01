@@ -37,6 +37,7 @@
       galacticboi-host = "galacticboi-nixos";
       wsl-host = "wsl-nixos";
       dell-wsl-host = "dell-wsl-nixos";
+      dell5690-wsl-host = "dell5690-wsl-nixos";
       nix-remote-host = "nix-remote";
       systemDefault = "x86_64-linux";
 
@@ -124,6 +125,12 @@
           username = defaultUsername;
         };
 
+        ## Dell5690-WSL
+        "${defaultUsername}@${dell5690-wsl-host}" = mkHomeConfig {
+          hostname = dell5690-wsl-host;
+          username = defaultUsername;
+        };
+
         ## Hetzner remote server
         "${defaultUsername}@${nix-remote-host}" = mkHomeConfig {
           hostname = nix-remote-host;
@@ -153,6 +160,15 @@
         ## Dell WSL
         "${dell-wsl-host}" = mkNixOSConfig {
           hostname = dell-wsl-host;
+          username = defaultUsername;
+          modules = [
+            nixos-wsl.nixosModules.default
+          ];
+        };
+
+        ## Dell5690 WSL
+        "${dell5690-wsl-host}" = mkNixOSConfig {
+          hostname = dell5690-wsl-host;
           username = defaultUsername;
           modules = [
             nixos-wsl.nixosModules.default
