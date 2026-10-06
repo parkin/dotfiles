@@ -40,6 +40,13 @@
         }
       ];
     };
+
+    # zsh-vi-mode defaults to initialising on the first prompt (precmd), which
+    # rebuilds the keymaps and clobbers any bindings made after the plugin is
+    # sourced -- notably fzf's ^R history widget. Initialising at sourcing time
+    # instead lets later bindkeys (order 1000+) win.
+    # Order 800: after zsh-autosuggestions (700), before plugin sourcing (900).
+    programs.zsh.initContent = lib.mkOrder 800 "ZVM_INIT_MODE=sourcing";
   };
 
 }
