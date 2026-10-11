@@ -12,9 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
-    taskeru = {
-      url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.59.3";
-    };
+    bobshell.url = "git+ssh://git@github.ibm.com/parkin/bobshell-nix";
+    taskeru.url = "git+ssh://git@github.com/parkin/taskeru.git?ref=refs/tags/v0.59.3";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +28,7 @@
       home-manager,
       nixos-wsl,
       disko,
+      bobshell,
       ...
     }@inputs:
     let
@@ -41,15 +41,13 @@
       nix-remote-host = "nix-remote";
       systemDefault = "x86_64-linux";
 
-      overlays = [
-        (final: prev: {
-          bobshell = final.callPackage ./pkgs/bobshell { };
-        })
-      ];
-
       pkgs = import nixpkgs {
         system = systemDefault;
-        overlays = overlays;
+      };
+      # pkgs with the bobshell overlay, only used by hosts that opt in
+      pkgsWithBobshell = import nixpkgs {
+        system = systemDefault;
+        overlays = [ bobshell.overlays.default ];
       };
       # helper function for setting config.mynixos options
       mkMyNixosOpts =
@@ -60,9 +58,13 @@
         };
       # helper function for homeManagerConfiguration for code reuse
       mkHomeConfig =
-        args@{ hostname, ... }:
+        args@{
+          hostname,
+          withBobshell ? false,
+          ...
+        }:
         home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = if withBobshell then pkgsWithBobshell else pkgs;
           # pkgs = import nixpkgs {
           #   system = systemDefault;
           # };
@@ -101,8 +103,6 @@
         };
     in
     {
-      packages.${systemDefault}.bobshell = pkgs.bobshell;
-
       ## Standalone home-manager config entrypoint.
       # Available through `nh home switch`
       # (Also available through `home-manager --flake .#your-username@your-hostname`)
@@ -117,18 +117,21 @@
         "${defaultUsername}@${wsl-host}" = mkHomeConfig {
           hostname = wsl-host;
           username = defaultUsername;
+          withBobshell = true;
         };
 
         ## Dell-WSL
         "${defaultUsername}@${dell-wsl-host}" = mkHomeConfig {
           hostname = dell-wsl-host;
           username = defaultUsername;
+          withBobshell = true;
         };
 
         ## Dell5690-WSL
         "${defaultUsername}@${dell5690-wsl-host}" = mkHomeConfig {
           hostname = dell5690-wsl-host;
           username = defaultUsername;
+          withBobshell = true;
         };
 
         ## Hetzner remote server
