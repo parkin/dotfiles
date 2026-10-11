@@ -35,7 +35,6 @@
       inherit (self) outputs;
       defaultUsername = "parkin";
       galacticboi-host = "galacticboi-nixos";
-      wsl-host = "wsl-nixos";
       dell-wsl-host = "dell-wsl-nixos";
       dell5690-wsl-host = "dell5690-wsl-nixos";
       nix-remote-host = "nix-remote";
@@ -113,13 +112,6 @@
           username = defaultUsername;
         };
 
-        ## WSL
-        "${defaultUsername}@${wsl-host}" = mkHomeConfig {
-          hostname = wsl-host;
-          username = defaultUsername;
-          withBobshell = true;
-        };
-
         ## Dell-WSL
         "${defaultUsername}@${dell-wsl-host}" = mkHomeConfig {
           hostname = dell-wsl-host;
@@ -149,15 +141,6 @@
         "${galacticboi-host}" = mkNixOSConfig {
           hostname = galacticboi-host;
           username = defaultUsername;
-        };
-
-        ## Lenovo WSL
-        "${wsl-host}" = mkNixOSConfig {
-          hostname = wsl-host;
-          username = defaultUsername;
-          modules = [
-            nixos-wsl.nixosModules.default
-          ];
         };
 
         ## Dell WSL
